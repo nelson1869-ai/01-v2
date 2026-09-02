@@ -1,30 +1,25 @@
-function StatusBadge() {
-  // inline-flex = parang flex pero inline
-  // items-center = align sa gitna
-  // gap-1.5 = espasyo sa pagitan
-  // text-sm = maliit na text
-  // text-emerald-400 = berdeng kulay
-  return (
-    <span className="inline-flex items-center gap-1.5 text-sm text-emerald-400">
-      <span className="size-2 rounded-full bg-emerald-400"></span>
-      Live
-    </span>
-  );
-}
+"use client";
+
+import { useState } from "react";
 
 export default function Page() {
-  // min-h-screen = buong taas ng screen
-  // bg-[#050711] = custom dark na kulay (hex color)
-  // text-white = puting text
-  // p-8 = padding sa lahat ng sides
+  // useState = nagtatago ng value na pwedeng magbago
+  // false = default na value (hindi pa na-click)
+  const [clicked, setClicked] = useState(false);
+
   return (
     <main className="min-h-screen bg-[#050711] text-white p-8">
-      {/* mt-0 mb-2 = walang margin sa itaas, maliit sa baba */}
-      <h1 className="text-2xl font-bold text-indigo-400">AutoDo 01-v2</h1>
+      <h1 className="text-2xl font-bold text-indigo-400 mb-4">AutoDo 01-v2</h1>
 
-      <p className="text-gray-400 text-sm mb-4">Personal AI OS — Phase 0</p>
+      <button
+        onClick={() => setClicked(true)}
+        className="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded font-semibold"
+      >
+        Subukan
+      </button>
 
-      <StatusBadge />
+      {/* Lalabas lang kapag clicked ay true */}
+      {clicked && <p className="mt-4 text-emerald-400">Na-click mo! 🎉</p>}
     </main>
   );
 }
