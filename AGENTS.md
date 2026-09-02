@@ -2068,3 +2068,31 @@ Every layer function MUST log with its assigned color:
 | Memory | Conceptual | pgvector + HNSW RAG |
 | Execution | Conceptual | Durable idempotent execution |
 | Observability | Conceptual | OpenTelemetry traces/spans |
+
+---
+
+# 51. STUDENT SIGNAL: `sm` (Student Mode Reminder)
+
+When the student sends `sm`:
+
+This means the student wants the AI to:
+
+1. Re-read `src/app/app-v2/CONTEXT.md`
+2. Run `git log --oneline`
+3. Identify the current phase and lesson
+4. Continue exactly where the student left off
+5. Respond in student/mentor mode with Taglish comments
+
+`sm` does NOT mean start over.
+`sm` means: "Get your context, then continue teaching me."
+
+---
+
+## Updated Student Signal Table
+
+| Signal | Meaning |
+|--------|---------|
+| `s` | Success — lesson ran fine, proceed to next |
+| `d` | Done — inspect my code and review it |
+| `sm` | Student Mode — re-read context and continue from where we left off |
+| `oo` | Yes / Go ahead |
