@@ -1,339 +1,250 @@
-# AutoDo 01-v2 — Learning Path (Natural na 0 to Hero)
+# AutoDo 01-v2 — Full Learning Roadmap
 
-> **Para kanino ito?**  
-> Para sa isang developer na gusto matutunan kung paano talaga gumagawa ng AI system  
-> mula sa simula — walang assumed knowledge, natural na progression, visible agad sa browser.
-
----
-
-## Bakit Mahalaga ang Order?
-
-Sa totoong mundo, hindi ka magsisimula sa abstract na architecture.  
-Magsisimula ka sa isang simpleng tanong:
-
-> _"Paano ko mapapakita ang kahit anong bagay sa browser?"_
-
-Tapos habang lumalaki ang problema, lumalaki rin ang solusyon.
-
-**Ito ang natural na paraan:**
-
-```
-Makita → Subukan → Maunawaan → Palawakin
-```
+> Lahat ng makabuluhang React, Next.js, TypeScript, at AI Engineering fundamentals
+> ay matututunan mo sa pamamagitan ng pagbuo ng isang real AI OS.
 
 ---
 
-## PHASE 0 — Makita Mo Muna ang Browser
+## Legend
 
-### Lesson 0.1 — Ano ang Next.js page?
-
-**Tanong:** Paano lumabas ang text sa browser?
-
-```tsx
-// src/app/app-v2/page.tsx
-export default function Page() {
-  return <h1>Hello, AutoDo!</h1>;
-}
-```
-
-- Buksan ang browser: `http://localhost:3000/app-v2`
-- Makita mo ang "Hello, AutoDo!" sa screen
-- **Konsepto:** Server Component, file-based routing
+| Symbol | Ibig Sabihin |
+|--------|--------------|
+| ✅ | Guide tapos na, handa para aralin |
+| 🔜 | Guide isusulat kapag malapit na |
+| ⏳ | Future — darating mamaya |
 
 ---
 
-### Lesson 0.2 — Ano ang React Component?
+## ✅ PHASE 0 — Browser Basics
+**Guide:** [`phases/phase_0.md`](./phases/phase_0.md)
 
-**Tanong:** Paano ko gagawing reusable ang UI?
+| Lesson | Paksa | React | Next.js | TypeScript |
+|--------|-------|-------|---------|------------|
+| 0.1 | Hello World sa Browser | JSX, export default | page.tsx = URL route | — |
+| 0.2 | React Component | Components, composition | — | — |
+| 0.3 | Tailwind Styling | className | — | — |
 
-```tsx
-function StatusBadge() {
-  return <span>🟢 Online</span>;
-}
-
-export default function Page() {
-  return (
-    <main>
-      <h1>AutoDo</h1>
-      <StatusBadge />
-    </main>
-  );
-}
-```
-
-- **Konsepto:** Components, JSX, composition
+**Commit pattern:** `feat(phase-0): ...`
 
 ---
 
-### Lesson 0.3 — Paano mag-style gamit ang Tailwind?
+## ✅ PHASE 1 — Interactive UI
+**Guide:** [`phases/phase_1.md`](./phases/phase_1.md)
 
-**Tanong:** Paano gagawing maganda ang page?
+| Lesson | Paksa | React | Next.js | TypeScript |
+|--------|-------|-------|---------|------------|
+| 1.1 | "use client" + useState + onClick | useState, onClick, conditional render | Server vs Client boundary | — |
+| 1.2 | Controlled Input | onChange, controlled input pattern | — | — |
+| 1.3 | Submit + F12 Console | handleSubmit, console.log styling | — | — |
 
-```tsx
-export default function Page() {
-  return (
-    <main className="min-h-screen bg-gray-900 text-white p-8">
-      <h1 className="text-2xl font-bold">AutoDo</h1>
-    </main>
-  );
-}
-```
-
-- **Konsepto:** Tailwind CSS utility classes, className
+**Commit pattern:** `feat(phase-1): ...`
 
 ---
 
-## PHASE 1 — Gawing Interactive
+## ✅ PHASE 2 — TypeScript Fundamentals
+**Guide:** [`phases/phase_2.md`](./phases/phase_2.md)
 
-### Lesson 1.1 — Ano ang "use client"?
+| Lesson | Paksa | React | Next.js | TypeScript |
+|--------|-------|-------|---------|------------|
+| 2.1 | Type Alias + Union Types | — | — | type, union, literal types |
+| 2.2 | Interface + Object Shape | — | — | interface, required properties |
+| 2.3 | Readonly (Immutability) | — | — | readonly, data integrity |
 
-**Tanong:** Bakit kailangan ng "use client" bago gumamit ng button?
-
-```tsx
-"use client"; // Kailangan ito para sa mga interactive na components
-
-import { useState } from "react";
-
-export default function Page() {
-  const [clicked, setClicked] = useState(false);
-
-  return (
-    <main>
-      <button onClick={() => setClicked(true)}>Subukan</button>
-      {clicked && <p>Na-click mo!</p>}
-    </main>
-  );
-}
-```
-
-- **Konsepto:** Server vs Client Components, useState, event handlers
+**Commit pattern:** `feat(phase-2): ...`
 
 ---
 
-### Lesson 1.2 — Text Input at State
+## ✅ PHASE 3 — Pipeline Functions + UI Connection
+**Guide:** [`phases/phase_3.md`](./phases/phase_3.md)
 
-**Tanong:** Paano makuha ang text na tine-type ng user?
+| Lesson | Paksa | React | Next.js | TypeScript |
+|--------|-------|-------|---------|------------|
+| 3.1 | Pure Functions (concept) | — | — | return types |
+| 3.2 | Expand types.ts (Layer 2 contract) | — | — | export type, export interface |
+| 3.3 | core/cue.ts — Layer 1 function | — | — | import type, function signature |
+| 3.4 | Connect Layer 1 sa UI | useState with custom type | — | generic useState<T> |
+| 3.5 | core/perception.ts — Layer 2 | — | — | Indexed access types T["key"] |
+| 3.6 | Layer 1 → Layer 2 sa UI | Multiple imports, display | — | import type |
 
-```tsx
-"use client";
-import { useState } from "react";
-
-export default function Page() {
-  const [prompt, setPrompt] = useState("");
-
-  return (
-    <main>
-      <input
-        value={prompt}
-        onChange={(e) => setPrompt(e.target.value)}
-        placeholder="Ano ang gusto mong gawin?"
-      />
-      <p>Sinulat mo: {prompt}</p>
-    </main>
-  );
-}
-```
-
-- **Konsepto:** Controlled input, onChange, state binding
+**Commit pattern:** `feat(phase-3): ...`
 
 ---
 
-### Lesson 1.3 — Submit Button + Console Log
+## ✅ PHASE 4 — Route Handler (Server)
+**Guide:** [`phases/phase_4.md`](./phases/phase_4.md)
 
-**Tanong:** Paano ko malalaman kung anong napasok sa F12 Console?
+| Lesson | Paksa | React | Next.js | TypeScript |
+|--------|-------|-------|---------|------------|
+| 4.1 | Simpleng POST Route Handler | — | Route Handlers, NextRequest/Response | async, Promise |
+| 4.2 | fetch() sa UI + loading state | async state, loading | — | async/await typing |
+| 4.3 | Ilipat pipeline sa server | — | Server-side imports | — |
 
-```tsx
-"use client";
-import { useState } from "react";
-
-export default function Page() {
-  const [prompt, setPrompt] = useState("");
-
-  function handleSubmit() {
-    console.log("Prompt na pumasok:", prompt); // Makikita sa Chrome F12!
-  }
-
-  return (
-    <main>
-      <input
-        value={prompt}
-        onChange={(e) => setPrompt(e.target.value)}
-        placeholder="Subukan: 'summarize my emails'"
-      />
-      <button onClick={handleSubmit}>Isend</button>
-    </main>
-  );
-}
-```
-
-> **Buksan ang Chrome F12 → Console tab habang nag-ti-type ka!**
+**Commit pattern:** `feat(phase-4): ...`
 
 ---
 
-## PHASE 2 — Ipakilala ang TypeScript
+## ✅ PHASE 5 — Real AI API (Gemini)
+**Guide:** [`phases/phase_5.md`](./phases/phase_5.md)
 
-### Lesson 2.1 — Bakit kailangan ng TypeScript?
+| Lesson | Paksa | React | Next.js | TypeScript |
+|--------|-------|-------|---------|------------|
+| 5.1 | .env.local + API key safety | — | env variables, .gitignore | — |
+| 5.2 | Gemini SDK + AI function | — | Server-only imports | Promise<T>, generic types |
+| 5.3 | Full pipeline sa UI | Streaming-ready state | — | Discriminated unions |
 
-```ts
-// PROBLEMA: walang type checks, pwedeng mag-crash
-function processPrompt(prompt) {
-  console.log(prompt.text); // Error kung wala .text!
-}
-
-// SOLUSYON: TypeScript
-function processPrompt(prompt: string) {
-  console.log(prompt); // Safe na!
-}
-```
-
-- **Konsepto:** Type annotations, compile-time protection
+**Commit pattern:** `feat(phase-5): ...`
 
 ---
 
-### Lesson 2.2 — Type Alias at Union Types
+## 🔜 PHASE 6 — PostgreSQL + SQL
+**Guide:** Isusulat kapag nasa Phase 5 ka na
 
-```ts
-// Ito ang type alias
-type CueSource = "chat" | "schedule" | "manual";
+| Lesson | Paksa |
+|--------|-------|
+| 6.1 | Ano ang database? Tables, rows, columns |
+| 6.2 | Unang SQL: SELECT, INSERT |
+| 6.3 | WHERE, ORDER BY, LIMIT |
+| 6.4 | Primary keys, foreign keys, constraints |
+| 6.5 | JOINs — pagsamahin ang dalawang tables |
+| 6.6 | Transactions — all or nothing |
+| 6.7 | I-connect sa Next.js (pg library) |
 
-const source: CueSource = "chat";       // OK
-const bad: CueSource = "bluetooth";    // ERROR agad sa VS Code!
-```
-
-- **Konsepto:** Union types, literal types, type aliases
-
----
-
-### Lesson 2.3 — Interface at Readonly
-
-```ts
-interface CueEvent {
-  readonly id: string;     // Bawal baguhin pagkagawa
-  readonly prompt: string;
-  source: CueSource;
-}
-
-const event: CueEvent = { id: "cue_001", prompt: "hello", source: "chat" };
-event.id = "changed"; // ERROR! Readonly
-```
-
-- **Konsepto:** Interface, readonly, immutability
+**Commit pattern:** `feat(phase-6): ...`
 
 ---
 
-## PHASE 3 — Ipakilala ang Pipeline Functions
+## 🔜 PHASE 7 — Drizzle ORM
+**Guide:** Isusulat kapas nasa Phase 6 ka na
 
-### Lesson 3.1 — Pure Function
+| Lesson | Paksa |
+|--------|-------|
+| 7.1 | Bakit ORM? TypeScript + SQL = Drizzle |
+| 7.2 | Schema definition (type-safe tables) |
+| 7.3 | Migrations |
+| 7.4 | Queries (select, insert, update, delete) |
+| 7.5 | Relations (one-to-many, many-to-many) |
 
-```ts
-// Pure function: same input = same output, walang side effects
-function cleanPrompt(rawText: string): string {
-  return rawText.replace(/\s+/g, " ").trim();
-}
-
-console.log(cleanPrompt("  hello   world  ")); // "hello world"
-```
-
----
-
-### Lesson 3.2 — Ikonekta ang Layer 1 sa UI (KASALUKUYAN)
-
-```tsx
-"use client";
-import { useState } from "react";
-import { createCueEvent } from "./core/cue";
-
-export default function Page() {
-  const [prompt, setPrompt] = useState("");
-  const [cueId, setCueId] = useState<string | null>(null);
-
-  function handleSubmit() {
-    const cue = createCueEvent(prompt, "chat"); // Layer 1!
-    setCueId(cue.cueId);
-    // Tingnan sa F12 Console ang PURPLE na log!
-  }
-
-  return (
-    <main>
-      <input value={prompt} onChange={(e) => setPrompt(e.target.value)} />
-      <button onClick={handleSubmit}>Run Layer 1</button>
-      {cueId && <p>Cue ID: {cueId}</p>}
-    </main>
-  );
-}
-```
+**Commit pattern:** `feat(phase-7): ...`
 
 ---
 
-### Lesson 3.3 — Layer 1 → Layer 2 Pipeline
+## 🔜 PHASE 8 — Memory + RAG (pgvector)
+**Guide:** Isusulat kapag nasa Phase 7 ka na
 
-```tsx
-function handleSubmit() {
-  const cue = createCueEvent(prompt, "chat");    // Layer 1 (Purple)
-  const command = parseCommand(cue);             // Layer 2 (Sky Blue)
+| Lesson | Paksa |
+|--------|-------|
+| 8.1 | Ano ang vector? Ano ang embedding? |
+| 8.2 | pgvector extension setup |
+| 8.3 | Gumawa ng embedding mula sa text |
+| 8.4 | HNSW index para sa mabilis na search |
+| 8.5 | Semantic similarity search |
+| 8.6 | Reranker — i-filter ang best results |
+| 8.7 | I-connect sa AutoDo pipeline (Layer 4) |
 
-  // F12 Console magpapakita ng dalawang colored logs!
-  console.log("Intent:", command.intent);
-}
-```
-
----
-
-## PHASE 4 — Ipakilala ang Server (Route Handlers)
-
-### Lesson 4.1 — Bakit kailangan ng server?
-
-```
-Client Side (browser)     Server Side (Node.js)
-─────────────────────     ─────────────────────
-OK: UI, interactions      OK: Database
-OK: Local state           OK: Secret API keys
-HINDI: API secrets        OK: Gmail API calls
-HINDI: Database           OK: Heavy computation
-```
-
-**Kapag kailangan ng Gmail API key → kailangan ng server!**
-
-### Lesson 4.2 — Simpleng Route Handler
-
-```ts
-// src/app/api/cue/route.ts
-import { NextRequest, NextResponse } from "next/server";
-
-export async function POST(req: NextRequest) {
-  const body = await req.json();
-  const { rawPrompt } = body;
-
-  console.log("[Server] Natanggap:", rawPrompt); // Makikita sa Terminal!
-
-  return NextResponse.json({ received: rawPrompt });
-}
-```
+**Commit pattern:** `feat(phase-8): ...`
 
 ---
 
-## PHASE 5 — Ipakilala ang Real AI
+## 🔜 PHASE 9 — Policy Layer (Safety)
+**Guide:** Isusulat kapag nasa Phase 8 ka na
 
-### Lesson 5.1 — Bakit Server-side ang AI calls?
+| Lesson | Paksa |
+|--------|-------|
+| 9.1 | Bakit deterministic policy? Hindi LLM |
+| 9.2 | Policy rules (allowlist, denylist) |
+| 9.3 | Llama Guard 4 integration |
+| 9.4 | Policy decision types (ALLOW, DENY, REVIEW) |
+| 9.5 | I-test ang policy bypass scenarios |
 
-```
-MALI:  Browser → Gemini API (exposed ang API key!)
-TAMA:  Browser → Route Handler → Gemini API (safe!)
-```
+**Commit pattern:** `feat(phase-9): ...`
 
 ---
 
-## Ikaw ay Nandito Na:
+## 🔜 PHASE 10 — Authorization Layer
+**Guide:** Isusulat kapag nasa Phase 9 ka na
+
+| Lesson | Paksa |
+|--------|-------|
+| 10.1 | Requested scope != permission |
+| 10.2 | Capability scopes (read_only, write_email, etc.) |
+| 10.3 | RBAC (Role-Based Access Control) |
+| 10.4 | Authorization decision types |
+| 10.5 | I-test na hindi pwedeng mag-authorize ang AI mismo |
+
+**Commit pattern:** `feat(phase-10): ...`
+
+---
+
+## ⏳ PHASE 11 — Gmail Integration
+## ⏳ PHASE 12 — Durable Execution (retry, idempotency)
+## ⏳ PHASE 13 — Observation + Verification
+## ⏳ PHASE 14 — Reward + Learning
+## ⏳ PHASE 15 — Verified Memory
+## ⏳ PHASE 16 — Calendar Integration
+## ⏳ PHASE 17 — MCP (Model Context Protocol)
+## ⏳ PHASE 18 — Multi-provider AI (Claude, Llama, Ollama)
+## ⏳ PHASE 19 — OpenTelemetry Observability
+## ⏳ PHASE 20 — Production Hardening + Deployment
+
+---
+
+## Full Fundamentals Coverage
+
+### React
+| Concept | Phase |
+|---------|-------|
+| JSX, components, composition | 0 |
+| useState, onClick, conditional render | 1 |
+| Controlled inputs, onChange | 1 |
+| "use client" vs Server Component | 1 |
+| Async state (loading/error/success) | 4 |
+| Generic useState<T> | 3 |
+| useReducer | 6+ |
+| Custom hooks | 8+ |
+| React 19 Server Actions | 4+ |
+| Streaming UI (Suspense) | 5+ |
+| useRef, useMemo, useCallback | Later |
+
+### Next.js
+| Concept | Phase |
+|---------|-------|
+| File-based routing | 0 |
+| Layout (layout.tsx) | 0 |
+| Server Components | 0 |
+| Client Components | 1 |
+| Route Handlers | 4 |
+| Environment variables | 5 |
+| Middleware | 9+ |
+| Server Actions | 4+ |
+| Streaming responses | 5+ |
+| Deployment (Vercel) | 20 |
+
+### TypeScript
+| Concept | Phase |
+|---------|-------|
+| Type annotations | 2 |
+| Type alias, union, literal | 2 |
+| Interface, readonly | 2 |
+| import type, export | 3 |
+| Function return types | 3 |
+| Generic types <T> | 3-4 |
+| Promise<T>, async/await | 4 |
+| Discriminated unions | 5 |
+| satisfies operator | 5 |
+| Record<K,V>, Partial, Pick | 6 |
+| Mapped types | 7 |
+| never type | 9 |
+| Conditional types | 10+ |
+| Template literal types | Later |
+
+---
+
+## Kasalukuyang Posisyon
 
 ```
-Phase 0 — Visible sa browser              DONE
-Phase 1 — Interactive (buttons, inputs)   DONE
-Phase 2 — TypeScript types (types.ts)     DONE
-Phase 3.1 — Pipeline functions            DONE (cue.ts, perception.ts)
-Phase 3.2 — I-connect sa UI              <-- SUSUNOD NATING GAWIN
-Phase 4 — Route Handler (server)          Mamaya
-Phase 5 — Real AI calls                   Mamaya
+git log --oneline   ← I-run ito para malaman kung nasaan ka
 ```
 
-> **Next step:** I-connect natin ang createCueEvent + parseCommand sa isang
-> simpleng button sa page.tsx para makita ang pipeline sa Chrome F12 Console!
+Decode gamit ang `CONTEXT.md`.
+
+**Simulan sa Phase 0 Lesson 0.1 kung bago ka pa lang!**
