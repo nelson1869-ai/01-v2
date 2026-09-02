@@ -1,62 +1,129 @@
 # Phase 1 — Gawing Interactive ang Page
 
-> **Layunin:** Matuto kung paano tumugon ang UI sa user input.  
-> Ang browser ay kailangan munang "marinig" ang user bago mag-react ang system.
+> **Layunin:** Matuto kung paano tumugon ang UI sa user input.
+> Ang button at text input ang pinaka-basic na paraan ng pakikipag-usap ng user sa system.
+
+> **Gabay sa Git:** May `git commit` sa dulo ng bawat lesson.
 
 ---
 
 ## Lesson 1.1 — Ano ang `"use client"`?
 
-**Tanong:** Bakit may error kapag nag-lagay ako ng `onClick`?
+### Problema muna:
 
-**Sagot:** Sa Next.js App Router, ang lahat ng components ay **Server Components** by default.  
-Server Components ay nagre-render sa server — hindi sila interactive.
-
-Para gumamit ng:
-- `onClick`, `onChange` — user events
-- `useState`, `useEffect` — React hooks
-- browser APIs
-
-Kailangan ng `"use client"` sa simula ng file.
+Subukan mong dagdagan ang `page.tsx` ng `onClick` nang **walang** `"use client"`:
 
 ```tsx
-"use client"; // ← Lagyan ito sa UNANG linya ng file
+export default function Page() {
+  return (
+    <button onClick={() => console.log("clicked")}>
+      Click me
+    </button>
+  );
+}
+```
+
+Makikita mo ang **error sa browser** — hindi pwede ang `onClick` sa Server Component.
+
+### Bakit?
+
+Sa Next.js App Router, ang lahat ng components ay **Server Components** by default.
+Server Components ay nagre-render sa server — hindi sila interactive.
+
+```
+Server Component    →  Nagre-render sa server  →  Walang interactivity
+Client Component    →  Nagre-render sa browser →  May onClick, useState, etc.
+```
+
+Para gawing Client Component ang isang file, lagyan ng `"use client"` sa UNANG linya.
+
+### Ang solusyon:
+
+```tsx
+"use client"; // ← Unang linya — ginagawang Client Component
+
+export default function Page() {
+  return (
+    <button onClick={() => console.log("clicked")}>
+      Click me
+    </button>
+  );
+}
+```
+
+### I-type mo sa `src/app/app-v2/page.tsx`:
+
+```tsx
+"use client";
 
 import { useState } from "react";
 
 export default function Page() {
+  // useState = nagtatago ng value na pwedeng magbago
+  // false = default na value (hindi pa na-click)
   const [clicked, setClicked] = useState(false);
 
   return (
-    <main className="min-h-screen bg-gray-900 text-white p-8">
+    <main className="min-h-screen bg-[#050711] text-white p-8">
+      <h1 className="text-2xl font-bold text-indigo-400 mb-4">
+        AutoDo 01-v2
+      </h1>
+
       <button
         onClick={() => setClicked(true)}
-        className="bg-indigo-600 px-4 py-2 rounded"
+        className="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded font-semibold"
       >
         Subukan
       </button>
 
-      {/* Lalabas lang kapag clicked = true */}
-      {clicked && <p className="mt-4 text-green-400">Na-click mo!</p>}
+      {/* Lalabas lang kapag clicked ay true */}
+      {clicked && (
+        <p className="mt-4 text-emerald-400">
+          Na-click mo! 🎉
+        </p>
+      )}
     </main>
   );
 }
 ```
 
-**Natututo tayo ng:**
-- Server Component vs Client Component
-- `"use client"` directive
-- `useState` — nag-iingat ng local state
-- Conditional rendering (`{condition && <JSX />}`)
-- onClick event handler
+### Subukan:
+
+1. Refresh ang browser: `http://localhost:3000/app-v2`
+2. I-click ang button
+3. Dapat lumabas ang "Na-click mo! 🎉"
+
+### Ano ang natutunan mo?
+
+| Konsepto | Paliwanag |
+|----------|-----------|
+| `"use client"` | Ginagawang interactive ang component |
+| `useState(false)` | Nag-iingat ng value na maaaring magbago |
+| `[clicked, setClicked]` | `clicked` = value, `setClicked` = function para baguhin |
+| `onClick={() => setClicked(true)}` | Kapag na-click, i-set ang clicked sa true |
+| `{clicked && <p>...</p>}` | Conditional rendering — lalabas lang kapag true |
+
+### 📝 Git Commit:
+
+```bash
+git add src/app/app-v2/page.tsx
+git commit -m "feat(phase-1): add use client useState and onClick button"
+```
 
 ---
 
 ## Lesson 1.2 — Text Input at State
 
-**Tanong:** Paano makuha ang text na tine-type ng user?
+### Ano ang gagawin?
 
-**Sagot:** Gumamit ng "controlled input" — ang value ng input ay naka-bind sa state.
+"Controlled input" — ang value ng input ay naka-bind sa state.
+Bawat keypress ng user ay nag-a-update ng state, at ang state ang nagko-control ng input.
+
+```
+User nag-type → onChange event → setPrompt() → state nag-update → input nag-update
+```
+
+### I-update ang `src/app/app-v2/page.tsx`:
 
 ```tsx
 "use client";
@@ -64,44 +131,66 @@ export default function Page() {
 import { useState } from "react";
 
 export default function Page() {
-  // prompt = ang kasalukuyang value ng input
-  // setPrompt = ang function para baguhin ito
+  // prompt = ang text na tine-type ng user
   const [prompt, setPrompt] = useState("");
 
   return (
-    <main className="min-h-screen bg-gray-900 text-white p-8">
+    <main className="min-h-screen bg-[#050711] text-white p-8 space-y-4">
+      <h1 className="text-2xl font-bold text-indigo-400">
+        AutoDo 01-v2
+      </h1>
 
       <input
-        value={prompt}                            // ← state ang nagko-control ng value
-        onChange={(e) => setPrompt(e.target.value)} // ← bawat keypress, nag-a-update ang state
+        value={prompt}
+        onChange={(e) => setPrompt(e.target.value)}
         placeholder="Ano ang gusto mong gawin?"
-        className="w-full bg-gray-800 border border-gray-700 rounded px-4 py-2"
+        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
       />
 
       {/* Real-time na lumalabas ang tine-type mo */}
-      <p className="mt-4 text-gray-400">
-        Sinulat mo: <span className="text-white">{prompt}</span>
-      </p>
-
+      {prompt && (
+        <p className="text-sm text-gray-400">
+          Sinulat mo: <span className="text-white font-medium">{prompt}</span>
+        </p>
+      )}
     </main>
   );
 }
 ```
 
-**Natututo tayo ng:**
-- Controlled input pattern (`value` + `onChange`)
-- `e.target.value` — kunin ang text mula sa input event
-- Real-time state updates
-- Template literals sa JSX
+### Subukan:
+
+1. Refresh ang browser
+2. Mag-type ng kahit anong text sa input
+3. Dapat makita mo real-time ang text sa ibaba
+
+### Ano ang natutunan mo?
+
+| Konsepto | Paliwanag |
+|----------|-----------|
+| `value={prompt}` | Ang state ang nagko-control ng value ng input |
+| `onChange={(e) => setPrompt(e.target.value)}` | Bawat keypress, kinukuha ang text at inilagay sa state |
+| `e.target.value` | Ang actual na text na naka-type sa input |
+| `{prompt && <p>...</p>}` | Lalabas lang kapag may laman ang prompt |
+
+### 📝 Git Commit:
+
+```bash
+git add src/app/app-v2/page.tsx
+git commit -m "feat(phase-1): add controlled text input with real-time state binding"
+```
 
 ---
 
 ## Lesson 1.3 — Submit Button + Console Log (Chrome F12!)
 
-**Tanong:** Paano ko malalaman kung anong napasok sa F12 Console?
+### Ano ang gagawin?
 
-**Sagot:** Gumawa ng function na tumatawag ng `console.log`.  
-Tingnan ang output sa **Chrome DevTools → F12 → Console tab**.
+Gumawa ng **handleSubmit** function at makita ang output sa **Chrome DevTools Console (F12)**.
+
+Ito ang pinaka-importanteng tool ng developer — ang F12 Console!
+
+### I-update ang `src/app/app-v2/page.tsx`:
 
 ```tsx
 "use client";
@@ -111,32 +200,45 @@ import { useState } from "react";
 export default function Page() {
   const [prompt, setPrompt] = useState("");
 
-  // Ito ang function na tatakbo kapag na-click ang button
+  // Ito ang function na tatakbo kapag na-click ang Send button
   function handleSubmit() {
+    if (!prompt.trim()) return; // Huwag mag-proceed kapag walang laman
+
+    // console.log na may kulay! Makikita sa Chrome F12 → Console
+    // %c = CSS styling, ang pangalawang argument ay ang CSS
     console.log(
-      "%c[AutoDo] Prompt na pumasok:",
+      "%c[AutoDo] 🧠 Prompt received:",
       "color: #818cf8; font-weight: bold;",
       prompt
     );
-    // Buksan ang Chrome F12 → Console para makita ang purple na log!
+
+    setPrompt(""); // I-clear ang input pagkatapos mag-submit
   }
 
   return (
-    <main className="min-h-screen bg-gray-900 text-white p-8 space-y-4">
+    <main className="min-h-screen bg-[#050711] text-white p-8 space-y-4">
+      <h1 className="text-2xl font-bold text-indigo-400">
+        AutoDo 01-v2
+      </h1>
+
+      <p className="text-xs text-gray-500 font-mono">
+        Buksan ang Chrome F12 → Console para makita ang logs!
+      </p>
 
       <input
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
         placeholder="Subukan: 'summarize my emails'"
-        className="w-full bg-gray-800 border border-gray-700 rounded px-4 py-2"
+        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
       />
 
       <button
         onClick={handleSubmit}
-        disabled={prompt.trim() === ""}
-        className="bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 px-6 py-2 rounded font-semibold"
+        disabled={!prompt.trim()}
+        className="bg-indigo-600 hover:bg-indigo-700 disabled:opacity-40 disabled:cursor-not-allowed px-6 py-2.5 rounded-lg font-semibold transition"
       >
-        Isend sa Layer 1
+        Send →
       </button>
 
     </main>
@@ -144,27 +246,39 @@ export default function Page() {
 }
 ```
 
-**Pag-aralan sa Chrome DevTools:**
-1. Buksan ang `http://localhost:3000/app-v2`
-2. Pindutin ang `F12` para buksan ang DevTools
-3. Pumunta sa **Console** tab
-4. Mag-type ng kahit anong text tapos i-click ang button
+### Subukan:
+
+1. Refresh ang browser
+2. Buksan ang **Chrome F12 → Console tab**
+3. Mag-type ng "summarize my emails" sa input
+4. I-click ang Send (o pindutin ang Enter)
 5. Makikita mo ang **purple na log** sa console!
 
-**Natututo tayo ng:**
-- Function declaration
-- `console.log` with CSS styling (`%c` prefix)
-- `disabled` attribute
-- Chrome DevTools Console
+### Ano ang natutunan mo?
+
+| Konsepto | Paliwanag |
+|----------|-----------|
+| `function handleSubmit()` | Function declaration — pinangalanang function |
+| `if (!prompt.trim()) return` | Guard clause — huwag mag-proceed kapag walang laman |
+| `console.log("%c...", "color:...")` | Styled console log — visible sa Chrome F12 |
+| `onKeyDown={(e) => e.key === "Enter" && handleSubmit()}` | Submit din kapag pinindot ang Enter |
+| `disabled={!prompt.trim()}` | Button ay disabled kapag walang laman ang input |
+
+### 📝 Git Commit:
+
+```bash
+git add src/app/app-v2/page.tsx
+git commit -m "feat(phase-1): add submit handler with styled F12 console logging"
+```
 
 ---
 
-## Status ng Phase 1
+## Summary ng Phase 1
 
-| Lesson | Paksa | Status |
-|--------|-------|--------|
-| 1.1 | `"use client"`, useState, onClick | ✅ Tapos |
-| 1.2 | Controlled input, onChange | ✅ Tapos |
-| 1.3 | handleSubmit, console.log, F12 | ✅ Tapos |
+| Lesson | Natututo | Commit |
+|--------|----------|--------|
+| 1.1 | `"use client"`, useState, onClick, conditional render | `feat(phase-1): add use client useState and onClick button` |
+| 1.2 | Controlled input, onChange, real-time binding | `feat(phase-1): add controlled text input with real-time state binding` |
+| 1.3 | handleSubmit, console.log F12, Enter key, disabled | `feat(phase-1): add submit handler with styled F12 console logging` |
 
 **Next:** [Phase 2 — Ipakilala ang TypeScript](./phase_2.md)
