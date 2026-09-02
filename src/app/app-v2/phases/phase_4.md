@@ -217,6 +217,140 @@ git commit -m "feat(phase-4): move Layer 1 and Layer 2 pipeline to server Route 
 
 ---
 
+## Phase 4 Completion Test
+
+Gawin lamang ito pagkatapos ma-complete at ma-commit ang Lessons 4.1–4.3.
+
+### 1. Automated validation
+
+Sa project root, i-run:
+
+```bash
+npm run lint && npx tsc --noEmit
+```
+
+Expected:
+
+- Walang ESLint error.
+- Walang TypeScript error.
+- Kapag may warning, i-copy ang warning at ipakita sa mentor para ma-review.
+
+### 2. Run the browser-to-server flow
+
+```bash
+npm run dev
+```
+
+Pagkatapos, buksan ang `/app-v2` at Chrome **F12 → Console**. Panatilihing bukas din ang terminal kung saan tumatakbo ang Next.js.
+
+Gamitin ang safe test input na ito:
+
+```text
+summarize my emails
+```
+
+Expected flow:
+
+```text
+Browser UI
+   │  POST /api/cue
+   ▼
+Next.js Route Handler
+   │
+   ├── Layer 1: createCueEvent()
+   ├── Layer 2: parseCommand()
+   └── server terminal logs
+   │
+   ▼
+JSON response → Browser
+```
+
+Sa browser, dapat ma-trigger ang request at matapos ang loading state. Sa **F12 → Network**, piliin ang `cue` request at i-check na:
+
+- Request Method: `POST`
+- Status: `200`
+- Request body: `{ "rawPrompt": "summarize my emails" }`
+- Response body: may `command` object
+
+Puwede ring i-check ang final Route Handler contract mula sa F12 Console:
+
+```js
+fetch("/api/cue", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ rawPrompt: "summarize my emails" }),
+}).then(async (response) => ({
+  status: response.status,
+  body: await response.json(),
+})).then(console.log)
+```
+
+### 3. Expected example vs actual OBSERVED output
+
+Ang nasa ibaba ay **expected example lamang**. Dynamic ang IDs at timestamps; huwag kopyahin at tawaging actual output.
+
+```text
+status: 200
+body.command.intent: "email.summarize"
+body.command.requestedScope: "read_only"
+body.command.normalizedPrompt: "summarize my emails"
+body.command.cueId: "cue_<dynamic>"
+body.command.commandId: "cmd_<dynamic>"
+body.command.timestamp: "<dynamic ISO timestamp>"
+```
+
+Ang **actual OBSERVED output** ay ang response na talagang lumabas sa iyong F12 Console o Network panel.
+
+Expected terminal evidence:
+
+```text
+[AutoDo 🧠] [Layer 1: Input / Cue] ...
+[AutoDo 🧠] [Layer 2: Perception] ...
+[Server] Pipeline complete: ...
+POST /api/cue 200 ...
+```
+
+Hindi kailangang eksaktong magkapareho ang formatting ng terminal, pero dapat makita ang Layer 1, Layer 2, at successful POST request.
+
+### 4. Ipakita ang logs/output sa mentor
+
+Kapag magre-review gamit ang `d`, puwedeng i-paste o i-screenshot ang:
+
+1. Output ng `npm run lint && npx tsc --noEmit`.
+2. F12 Network status at safe JSON response ng `/api/cue`.
+3. Layer 1, Layer 2, at pipeline-complete logs mula sa server terminal.
+4. Error text at status code kung hindi `200` ang request.
+
+Huwag mag-paste ng cookies, authorization headers, tokens, passwords, o personal email content. I-redact ang anumang secret at gumamit lamang ng safe test prompt.
+
+### 5. Failure indicators
+
+- May ESLint o TypeScript error.
+- Hindi umaalis ang UI sa loading state.
+- Walang `/api/cue` request sa Network panel.
+- Hindi `200` ang response, invalid JSON ang body, o walang `command` object.
+- Mali ang `intent` o `requestedScope` para sa safe input.
+- Walang Layer 1 o Layer 2 log sa **server terminal**.
+- Pagkatapos ng Lesson 4.3, `undefined` ang old response fields sa UI. Ipakita ito sa mentor dahil senyales ito na hindi tugma ang UI response type/display at ang final `{ command }` server contract.
+
+### 6. Verify the exact lesson commits
+
+```bash
+git log --format='%s' --all
+```
+
+Hanapin ang eksaktong tatlong lines na ito:
+
+```text
+feat(phase-4): create POST /api/cue Route Handler
+feat(phase-4): connect UI to POST /api/cue server route with fetch
+feat(phase-4): move Layer 1 and Layer 2 pipeline to server Route Handler
+```
+
+Kapag may kulang o iba ang spelling, huwag munang pumunta sa Phase 5.
+
+---
+
 ## Summary ng Phase 4
 
 | Lesson | Natututo | Commit |

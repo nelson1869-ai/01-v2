@@ -204,6 +204,140 @@ git commit -m "feat(phase-5): connect full Layer1-Layer2-AI pipeline to UI with 
 
 ---
 
+## Phase 5 Completion Test
+
+Gawin lamang ito pagkatapos ma-complete at ma-commit ang Lessons 5.1–5.3 at mayroon nang valid Gemini API key sa local `.env.local`.
+
+### 1. Automated at secret-safety validation
+
+Sa project root, i-run:
+
+```bash
+npm run lint && npx tsc --noEmit
+npm ls @google/generative-ai
+git check-ignore .env.local
+git status --short -- .env.local
+```
+
+Expected:
+
+- Walang ESLint o TypeScript error.
+- Makikita ang installed `@google/generative-ai` package.
+- Ipi-print ng `git check-ignore` ang `.env.local`, ibig sabihin ignored ito.
+- Walang output ang `git status --short -- .env.local`, ibig sabihin hindi ito staged o tracked.
+
+Huwag gamitin ang `cat .env.local` at huwag i-paste ang API key sa mentor.
+
+### 2. Run the real AI pipeline
+
+```bash
+npm run dev
+```
+
+Buksan ang `/app-v2`, Chrome **F12 → Console**, at ang **Network** panel. Panatilihing bukas ang server terminal.
+
+Gamitin ang safe synthetic prompt na ito—hindi ito nagbabasa o nagpapadala ng totoong email:
+
+```text
+summarize my sample emails
+```
+
+Expected flow:
+
+```text
+Browser UI
+   │  POST /api/cue
+   ▼
+Layer 1 → Layer 2
+   │
+   ▼
+Layer 5: reasonWithAI()
+   │  server-side Gemini call
+   ▼
+Structured AI JSON
+   │
+   ▼
+Route response → UI
+```
+
+I-submit nang isang beses at hintayin ang request. Sa F12 Network, dapat `200` ang `/api/cue` at JSON ang response.
+
+### 3. Expected example vs actual OBSERVED output
+
+Ang AI text, confidence, IDs, at wording ay dynamic. Ito ay **expected shape example lamang**, hindi actual output:
+
+```json
+{
+  "cueId": "cue_<dynamic>",
+  "intent": "email.summarize",
+  "scope": "read_only",
+  "aiSummary": "<dynamic AI-generated summary>",
+  "suggestedAction": "<dynamic AI-generated action>",
+  "confidence": 0.82
+}
+```
+
+Ang `0.82` ay sample number lamang; huwag asahang eksaktong iyon ang actual confidence.
+
+Ang **actual OBSERVED output** ay ang JSON na talagang ibinalik ng server. I-check na:
+
+- `intent` ay `email.summarize`.
+- `scope` ay `read_only`.
+- Non-empty string ang `aiSummary` at `suggestedAction`.
+- Number mula `0` hanggang `1` ang `confidence`.
+- Lumalabas ang returned values sa UI.
+
+Expected server-terminal evidence:
+
+```text
+[AutoDo 🧠] [Layer 1: Input / Cue] ...
+[AutoDo 🧠] [Layer 2: Perception] ...
+[Server] 🤖 Nagpapadala sa Gemini...
+[Server] 🤖 Gemini response: ...
+POST /api/cue 200 ...
+```
+
+Ang AI response ay OBSERVED provider output. Ang `intent` at `scope` ay DERIVED ng Layer 2 rules. Hindi sila dapat tawaging simulated.
+
+### 4. Ipakita ang logs/output sa mentor
+
+Kapag magre-review gamit ang `d`, puwedeng i-paste o i-screenshot ang:
+
+1. Lint, TypeScript, package, at gitignore check results.
+2. `/api/cue` status at redacted JSON response mula sa Network panel.
+3. Browser send/receive logs at server Layer 1, Layer 2, at Gemini log labels.
+4. Exact provider error message at HTTP status kung nabigo ang request.
+
+I-redact ang API key, request headers, cookies, billing/project identifiers, at personal content. Huwag i-paste ang buong `.env.local`. Safe synthetic prompt lang ang gamitin.
+
+### 5. Failure indicators
+
+- May lint o TypeScript error, o missing ang SDK package.
+- Hindi ignored ang `.env.local`, o lumalabas ito bilang staged/tracked.
+- `401`/`403` authentication error, quota/rate-limit error, unavailable-model error, o non-`200` API response.
+- Hindi valid JSON ang Gemini response kaya nag-fail ang `JSON.parse`.
+- Missing o maling type ang alinman sa `aiSummary`, `suggestedAction`, o `confidence`.
+- Walang Gemini send/response logs sa server terminal.
+- May TypeScript error sa Phase 5 UI dahil hindi na-update ang `ServerResponse` contract kasabay ng bagong response fields; ipakita ang error sa mentor.
+
+### 6. Verify the exact lesson commits
+
+```bash
+git log --format='%s' --all
+```
+
+Hanapin ang eksaktong tatlong lines na ito:
+
+```text
+chore: verify .env.local is gitignored for API key safety
+feat(phase-5): add Gemini AI reasoning function with server-side API call
+feat(phase-5): connect full Layer1-Layer2-AI pipeline to UI with Gemini response
+```
+
+Kapag may kulang o iba ang spelling, huwag munang pumunta sa Phase 6.
+
+---
+
 ## Summary ng Phase 5
 
 | Lesson | Natututo | Commit |

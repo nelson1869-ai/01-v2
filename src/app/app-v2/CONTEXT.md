@@ -47,6 +47,10 @@ git log --oneline
 | `feat(phase-3): layer1-layer2 ui...` | Phase 3, Lesson 3.6 tapos — Phase 3 DONE |
 | `feat(phase-4): route handler...` | Phase 4, Lesson 4.x tapos |
 | `feat(phase-5): gemini api...` | Phase 5, Lesson 5.x tapos |
+| `feat(phase-6): connect Next.js to PostgreSQL...` | Phase 6, Lesson 6.7 tapos — Phase 6 DONE |
+| `feat(phase-7): define Drizzle relations...` | Phase 7, Lesson 7.5 tapos — Phase 7 DONE |
+| `feat(phase-8): connect Layer 4 memory retrieval...` | Phase 8, Lesson 8.7 tapos — Phase 8 DONE |
+| `feat(phase-9): add policy tests...` | Phase 9, Lesson 9.5 tapos — Phase 9 DONE |
 
 ---
 
@@ -64,7 +68,11 @@ src/app/app-v2/
     ├── phase_2.md      ← Lesson guide: TypeScript (Lessons 2.1–2.3)
     ├── phase_3.md      ← Lesson guide: Pipeline functions (Lessons 3.1–3.6)
     ├── phase_4.md      ← Lesson guide: Route Handler/Server (Lessons 4.1–4.3)
-    └── phase_5.md      ← Lesson guide: Real AI API (Lessons 5.1–5.3)
+    ├── phase_5.md      ← Lesson guide: Real AI API (Lessons 5.1–5.3)
+    ├── phase_6.md      ← Lesson guide: PostgreSQL at SQL (Lessons 6.1–6.7)
+    ├── phase_7.md      ← Lesson guide: Drizzle ORM (Lessons 7.1–7.5)
+    ├── phase_8.md      ← Lesson guide: pgvector at RAG (Lessons 8.1–8.7)
+    └── phase_9.md      ← Lesson guide: Policy at safety (Lessons 9.1–9.5)
 ```
 
 ---
@@ -137,7 +145,7 @@ Kapag nagbibigay ng bagong lesson:
 3. Magbigay ng maliit na ASCII visual para ipakita ang flow o relationship.
 4. Huwag ulitin ang code mula sa phase file. Ang student mismo ang magko-copy mula sa phase file.
 5. Magbigay lamang ng ONE implementation task, pagkatapos ay maghintay.
-6. Bawat phase guide should eventually include a Phase Completion Test para sa automated validation, accumulated runtime flow, expected logs/output, at commit verification.
+6. Bawat Phase 0–9 guide must include a tailored Phase Completion Test para sa automated validation, accumulated runtime flow, expected-versus-OBSERVED logs/output, failure indicators, safe output sharing, at exact commit verification.
 
 Kapag nag-send ang student ng `d`:
 

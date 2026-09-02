@@ -273,6 +273,106 @@ git commit -m "feat(phase-1): add submit handler with styled F12 console logging
 
 ---
 
+## Phase 1 Completion Test
+
+Gawin lamang ito pagkatapos ma-complete at ma-commit ang Lessons 1.1–1.3.
+
+### 1. Automated validation
+
+Sa project root, i-run:
+
+```bash
+npm run lint && npx tsc --noEmit
+```
+
+Expected:
+
+- Walang ESLint error.
+- Walang TypeScript error.
+- Karaniwang walang output ang `npx tsc --noEmit` kapag successful.
+- Kapag may warning, i-copy ang warning at ipakita sa mentor para ma-review.
+
+### 2. Run the app and open the console
+
+```bash
+npm run dev
+```
+
+Buksan ang `http://localhost:3000/app-v2`, tapos buksan ang Chrome **F12 → Console**.
+
+### 3. Test the final Phase 1 interaction
+
+Gamitin lamang ang safe test prompt na:
+
+```text
+summarize my test emails
+```
+
+Expected visual flow:
+
+```text
+User types safe prompt
+          │
+          ▼
+prompt state updates
+          │
+          ▼
+Send click or Enter
+          │
+          ▼
+handleSubmit()
+     ├── F12 log
+     └── input clears
+```
+
+Kapag successful, ito ang dapat mong **OBSERVE**:
+
+- Habang blank o spaces lang ang input, disabled ang `Send →` button.
+- Kapag may prompt, enabled ang button.
+- Ang pag-click sa `Send →` o pagpindot sa Enter ay parehong nagso-submit.
+- Lumalabas sa F12 Console ang styled `[AutoDo] 🧠 Prompt received:` log kasama ang safe prompt.
+- Nagiging blank ulit ang input pagkatapos ng successful submit.
+- Ang blank input ay hindi gumagawa ng prompt log.
+
+Ang listahan sa itaas ay expected guide; ang sariling UI behavior at F12 log mo ang actual **OBSERVED output**.
+
+### 4. Ipakita ang logs/output sa mentor
+
+Kapag magre-review gamit ang `d`, puwedeng i-paste o ipakita ang:
+
+1. Output ng `npm run lint && npx tsc --noEmit`.
+2. F12 Console prompt log gamit ang safe test prompt.
+3. Screenshot bago at pagkatapos mag-submit.
+4. Exact terminal o browser error kung may hindi tumugma.
+
+Huwag gumamit o mag-paste ng tunay na email content, passwords, tokens, o ibang personal data.
+
+### 5. Failure indicators
+
+- Hindi makapag-type sa input.
+- Enabled ang button kahit blank ang input.
+- Walang log pagkatapos ng valid submit, o may log pagkatapos ng blank submit.
+- Hindi nagki-clear ang input pagkatapos mag-submit.
+- May browser, ESLint, o TypeScript error.
+
+### 6. Verify the lesson commits
+
+```bash
+git log --oneline
+```
+
+Expected: makikita ang exact commit message ng bawat lesson:
+
+```text
+feat(phase-1): add use client useState and onClick button
+feat(phase-1): add controlled text input with real-time state binding
+feat(phase-1): add submit handler with styled F12 console logging
+```
+
+Kapag may nawawalang required commit, huwag munang pumunta sa Phase 2.
+
+---
+
 ## Summary ng Phase 1
 
 | Lesson | Natututo | Commit |

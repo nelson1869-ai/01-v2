@@ -190,6 +190,95 @@ git commit -m "feat(phase-0): add Tailwind styling — dark theme and green stat
 
 ---
 
+## Phase 0 Completion Test
+
+Gawin lamang ito pagkatapos ma-complete at ma-commit ang Lessons 0.1–0.3.
+
+### 1. Automated validation
+
+Sa project root, i-run:
+
+```bash
+npm run lint && npx tsc --noEmit
+```
+
+Expected:
+
+- Walang ESLint error.
+- Walang TypeScript error.
+- Karaniwang walang output ang `npx tsc --noEmit` kapag successful.
+- Kapag may warning, i-copy ang warning at ipakita sa mentor para ma-review.
+
+### 2. Run the app
+
+```bash
+npm run dev
+```
+
+Pagkatapos, buksan ang `http://localhost:3000/app-v2`.
+
+### 3. Check the final Phase 0 page
+
+Expected visual flow:
+
+```text
+Next.js dev server
+        │
+        ▼
+   /app-v2 route
+        │
+        ▼
+page.tsx + StatusBadge
+        │
+        ▼
+Styled page in browser
+```
+
+Kapag successful, ito ang dapat mong **OBSERVE** sa browser:
+
+- Dark background.
+- Indigo na `AutoDo 01-v2` heading.
+- `Personal AI OS — Phase 0` subtitle.
+- Green dot at `Live` status badge.
+
+Wala pang required F12 Console log sa Phase 0. Ang browser page mismo ang runtime output.
+Ang listahan sa itaas ay expected guide; ang page na talagang nakikita mo sa browser ang actual **OBSERVED output**.
+
+### 4. Ipakita ang output sa mentor
+
+Kapag magre-review gamit ang `d`, puwedeng ipakita ang:
+
+1. Output ng `npm run lint && npx tsc --noEmit`.
+2. Screenshot ng buong `/app-v2` page.
+3. Exact terminal o browser error kung may hindi gumana.
+
+Huwag isama sa screenshot ang passwords, tokens, private tabs, o personal information.
+
+### 5. Failure indicators
+
+- `404` ang `/app-v2` route.
+- Blank page o may red browser error.
+- May ESLint o TypeScript error sa terminal.
+- Hindi dark ang background o hindi visible ang `Live` badge.
+
+### 6. Verify the lesson commits
+
+```bash
+git log --oneline
+```
+
+Expected: makikita ang exact commit message ng bawat lesson:
+
+```text
+feat(phase-0): hello world page at /app-v2 route
+feat(phase-0): add reusable StatusBadge component
+feat(phase-0): add Tailwind styling — dark theme and green status badge
+```
+
+Kapag may nawawalang required commit, huwag munang pumunta sa Phase 1.
+
+---
+
 ## Summary ng Phase 0
 
 | Lesson | Natututo | Commit |

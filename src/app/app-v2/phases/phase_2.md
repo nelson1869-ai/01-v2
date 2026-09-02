@@ -223,6 +223,105 @@ git commit -m "feat(phase-2): add readonly modifiers for immutable CueEvent cont
 
 ---
 
+## Phase 2 Completion Test
+
+Gawin lamang ito pagkatapos ma-complete at ma-commit ang Lessons 2.1–2.3.
+
+### 1. Automated validation
+
+Sa project root, i-run:
+
+```bash
+npm run lint && npx tsc --noEmit
+```
+
+Expected:
+
+- Walang ESLint error.
+- Walang TypeScript error.
+- Karaniwang walang output ang `npx tsc --noEmit` kapag successful.
+- Kapag may warning o error, i-copy ang exact output at ipakita sa mentor.
+
+### 2. Check the final TypeScript contract
+
+Sa `types.ts`, i-check na:
+
+- `CueSource` ay tumatanggap lamang ng `"chat"`, `"schedule"`, o `"manual"`.
+- Kumpleto ang apat na required properties ng `UnparsedCueEvent`.
+- Lahat ng properties ng `UnparsedCueEvent` ay may `readonly`.
+
+Safe values para sa pag-check:
+
+```text
+source: "chat"
+rawPrompt: "summarize my test emails"
+```
+
+Huwag iwan o i-commit ang invalid practice examples mula sa lessons.
+
+Expected learning flow:
+
+```text
+types.ts contract
+       │
+       ▼
+TypeScript checks shape
+       │
+       ├── valid value: accepted
+       └── invalid value: editor/compiler error
+       │
+       ▼
+No runtime UI change
+```
+
+### 3. Understand the expected output
+
+Ang Phase 2 ay compile-time protection, kaya ito ang dapat mong **OBSERVE**:
+
+- Successful ang `npm run lint && npx tsc --noEmit`.
+- Walang bagong required F12 log mula sa `types.ts`.
+- Walang bagong UI output; ang final Phase 1 page ay maaari pa ring lumabas sa browser.
+- Kapag pansamantalang gumamit ng `"bluetooth"` bilang value ng isang `CueSource` variable, dapat magpakita ang editor ng type error. I-undo agad ito at huwag i-commit.
+- Kapag pansamantalang sinubukang baguhin ang `readonly` property ng isang `UnparsedCueEvent`, dapat magpakita ang editor ng read-only error. I-undo agad ito at huwag i-commit.
+
+Ang mga error description sa itaas ay expected guide; ang compiler/editor result na talagang lumabas sa machine mo ang actual **OBSERVED output**.
+
+### 4. Ipakita ang output sa mentor
+
+Kapag magre-review gamit ang `d`, puwedeng i-paste o ipakita ang:
+
+1. Output ng `npm run lint && npx tsc --noEmit`.
+2. Screenshot ng `types.ts` na may final valid contract.
+3. Screenshot o exact text ng TypeScript error mula sa temporary invalid check.
+4. Exact validation error kung hindi pumasa.
+
+Gumamit lamang ng fake IDs at safe sample prompts. Huwag maglagay ng tunay na email content, secrets, tokens, o personal data sa examples.
+
+### 5. Failure indicators
+
+- May ESLint o TypeScript error sa final code.
+- Tinatanggap ng `CueSource` ang value na wala sa tatlong allowed literals.
+- Puwedeng baguhin ang properties dahil may nawawalang `readonly`.
+- Naiwan sa `types.ts` ang intentionally invalid practice code.
+
+### 6. Verify the lesson commits
+
+```bash
+git log --oneline
+```
+
+Expected: makikita ang exact commit message ng bawat lesson:
+
+```text
+feat(phase-2): add CueSource type alias with union literals
+feat(phase-2): add UnparsedCueEvent interface with object shape
+feat(phase-2): add readonly modifiers for immutable CueEvent contract
+```
+
+Kapag may nawawalang required commit, huwag munang pumunta sa Phase 3.
+
+---
+
 ## Summary ng Phase 2
 
 | Lesson | Natututo | Commit |

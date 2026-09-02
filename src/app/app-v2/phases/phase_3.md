@@ -403,6 +403,8 @@ Expected:
 - Walang TypeScript error.
 - Kapag may warning, i-copy ang warning at ipakita sa mentor para ma-review.
 
+Kapag huminto ang chained command, basahin ang unang error bago baguhin ang code. Ang error ay actual **OBSERVED** result ng validation.
+
 ### 2. Run the app
 
 ```bash
@@ -418,6 +420,8 @@ Pagkatapos, buksan ang `/app-v2` route at Chrome **F12 → Console**.
 | `summarize my emails` | Purple Input / Cue log at may `cueId` | Sky-blue log, `email.summarize`, `read_only` |
 | `schedule a meeting` | Purple Input / Cue log at may `cueId` | Sky-blue log, `calendar.schedule`, `write_calendar` |
 | Blank input | Walang Layer 1 execution | Walang Layer 2 execution |
+
+Ang table ay **expected output guide** lamang. Ang nasa sarili mong browser at terminal ang actual **OBSERVED output**.
 
 Expected visual flow:
 
@@ -445,13 +449,33 @@ Kapag magre-review gamit ang `d`, puwedeng i-paste ang:
 
 Huwag mag-paste ng secrets, tokens, passwords, o personal email content. Gumamit ng safe test prompts lamang.
 
-### 5. Verify the lesson commits
+### 5. Failure indicators
+
+- May ESLint o TypeScript error.
+- Walang Layer 1 o Layer 2 log pagkatapos ng valid submit.
+- May pipeline execution kahit blank ang input.
+- Hindi tumutugma ang `intent` o `requestedScope` sa expected row.
+- Walang `cueId` o `commandId` sa observed result.
+
+Kapag may failure, huwag manghula. I-copy ang exact safe error/log at send `d` para ma-trace natin ang layer na nag-fail.
+
+### 6. Verify the lesson commits
 
 ```bash
 git log --oneline
 ```
 
-Expected: present ang exact required commit ng bawat implementation lesson bago pumunta sa Phase 4.
+Expected na present ang exact required implementation commits:
+
+```text
+feat(phase-3): add Layer 2 CanonicalCommand and InferredIntent contracts
+feat(phase-3): create Layer 1 createCueEvent pure function
+feat(phase-3): connect Layer 1 createCueEvent to UI with F12 console output
+feat(phase-3): create Layer 2 parseCommand with rule-based intent detection
+feat(phase-3): connect Layer 1 to Layer 2 pipeline with visual output in UI
+```
+
+Huwag pumunta sa Phase 4 kapag may missing lesson commit o failing validation.
 
 ---
 
