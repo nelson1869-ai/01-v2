@@ -137,6 +137,7 @@ Kapag nagbibigay ng bagong lesson:
 3. Magbigay ng maliit na ASCII visual para ipakita ang flow o relationship.
 4. Huwag ulitin ang code mula sa phase file. Ang student mismo ang magko-copy mula sa phase file.
 5. Magbigay lamang ng ONE implementation task, pagkatapos ay maghintay.
+6. Bawat phase guide should eventually include a Phase Completion Test para sa automated validation, accumulated runtime flow, expected logs/output, at commit verification.
 
 Kapag nag-send ang student ng `d`:
 

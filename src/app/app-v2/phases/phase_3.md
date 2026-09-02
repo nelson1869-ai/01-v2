@@ -385,6 +385,76 @@ git commit -m "feat(phase-3): connect Layer 1 to Layer 2 pipeline with visual ou
 
 ---
 
+## Phase 3 Completion Test
+
+Gawin lamang ito pagkatapos ma-complete at ma-commit ang Lessons 3.1–3.6.
+
+### 1. Automated validation
+
+Sa project root, i-run:
+
+```bash
+npm run lint && npx tsc --noEmit
+```
+
+Expected:
+
+- Walang ESLint error.
+- Walang TypeScript error.
+- Kapag may warning, i-copy ang warning at ipakita sa mentor para ma-review.
+
+### 2. Run the app
+
+```bash
+npm run dev
+```
+
+Pagkatapos, buksan ang `/app-v2` route at Chrome **F12 → Console**.
+
+### 3. Test the accumulated pipeline
+
+| Input | Expected Layer 1 | Expected Layer 2 |
+|-------|------------------|------------------|
+| `summarize my emails` | Purple Input / Cue log at may `cueId` | Sky-blue log, `email.summarize`, `read_only` |
+| `schedule a meeting` | Purple Input / Cue log at may `cueId` | Sky-blue log, `calendar.schedule`, `write_calendar` |
+| Blank input | Walang Layer 1 execution | Walang Layer 2 execution |
+
+Expected visual flow:
+
+```text
+Browser input
+     │
+     ▼
+Layer 1: createCueEvent
+     │  purple log + cueId
+     ▼
+Layer 2: parseCommand
+     │  sky-blue log + intent + scope
+     ▼
+CanonicalCommand shown in UI
+```
+
+### 4. Ipakita ang logs/output sa mentor
+
+Kapag magre-review gamit ang `d`, puwedeng i-paste ang:
+
+1. Output ng `npm run lint && npx tsc --noEmit`.
+2. Layer 1 at Layer 2 text mula sa F12 Console.
+3. Actual UI values para sa `intent`, `scope`, `prompt`, at `commandId`.
+4. Error text kung may hindi tumugma sa expected result.
+
+Huwag mag-paste ng secrets, tokens, passwords, o personal email content. Gumamit ng safe test prompts lamang.
+
+### 5. Verify the lesson commits
+
+```bash
+git log --oneline
+```
+
+Expected: present ang exact required commit ng bawat implementation lesson bago pumunta sa Phase 4.
+
+---
+
 ## Summary ng Phase 3
 
 | Lesson | Natututo | Commit |
