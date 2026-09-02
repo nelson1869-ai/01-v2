@@ -1,0 +1,44 @@
+{
+  "_provenance": "SIMULATED_EXTERNAL_MESSAGE",
+  "sourceSystem": "Gmail",
+  "provider": "Google Gmail API v1",
+  "origin": "gmail.googleapis.com",
+  "account": "dev@autodo.ai",
+  "id": "msg_finance_03",
+  "threadId": "thread_invoice_03",
+  "labelIds": ["UNREAD", "IMPORTANT", "FINANCE", "INBOX"],
+  "snippet": "Pending invoice #INV-2026-118 is due for review and approval by Friday.",
+  "historyId": "98131",
+  "internalDate": "1779879133000",
+  "payload": {
+    "partId": "",
+    "mimeType": "multipart/alternative",
+    "filename": "",
+    "headers": [
+      { "name": "From", "value": "Finance Billing <billing@cloudhost.net>" },
+      { "name": "To", "value": "Nelson <dev@autodo.ai>" },
+      { "name": "Subject", "value": "Invoice #INV-2026-118 - Action Required" },
+      { "name": "Date", "value": "Tue, 27 May 2026 10:50:00 +0000" },
+      { "name": "Message-ID", "value": "<invoice-118-20260527@cloudhost.net>" },
+      { "name": "MIME-Version", "value": "1.0" },
+      {
+        "name": "Content-Type",
+        "value": "multipart/alternative; boundary=\"boundary_finance_03\""
+      }
+    ],
+    "body": { "size": 0 },
+    "parts": [
+      {
+        "partId": "0",
+        "mimeType": "text/plain",
+        "headers": [
+          { "name": "Content-Type", "value": "text/plain; charset=UTF-8" }
+        ],
+        "body": {
+          "size": 196,
+          "data": "Hello Nelson,\n\nInvoice #INV-2026-118 for monthly staging cluster resources is now available.\nAmount: $48.20 USD\nDue Date: May 30, 2026\n\nPlease verify in your dashboard."
+        }
+      }
+    ]
+  }
+}

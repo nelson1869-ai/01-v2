@@ -1,0 +1,53 @@
+{
+  "_provenance": "SIMULATED",
+  "retrievalRequired": true,
+  "reason": "The run benefits from the owner's verified email-summary formatting preference.",
+  "strategy": "HYBRID_VECTOR",
+  "request": {
+    "query": "email summary style preferences",
+    "rewrittenQuery": "verified owner preferences for concise Gmail summaries",
+    "sourcesSearched": ["Personal Memory", "Verified Memory"],
+    "filters": {
+      "ownerId": "usr_dev_001",
+      "verifiedOnly": true,
+      "minimumSimilarity": 0.8
+    },
+    "topK": 3,
+    "tokenBudget": 320
+  },
+  "results": [
+    {
+      "id": "mem_012",
+      "label": "Email Summary Formatting Preference",
+      "source": "Verified Memory",
+      "content": "User prefers concise bullet points with top senders.",
+      "similarityScore": 0.94,
+      "rerankingScore": 0.97,
+      "freshness": "Fresh",
+      "citation": "memory://verified/mem_012",
+      "selected": true,
+      "rejectionReason": null
+    },
+    {
+      "id": "doc_084",
+      "label": "Old Q1 Marketing Plan",
+      "source": "Files",
+      "content": "Q1 roadmap marketing review.",
+      "similarityScore": 0.42,
+      "rerankingScore": 0.31,
+      "freshness": "Stale",
+      "citation": "file://mock/doc_084",
+      "selected": false,
+      "rejectionReason": "Below relevance threshold"
+    }
+  ],
+  "output": {
+    "rawResultCount": 2,
+    "deduplicatedCount": 2,
+    "selectedCount": 1,
+    "selectedContext": "User prefers concise bullet points with top senders.",
+    "evidenceCoverage": 0.94,
+    "conflicts": [],
+    "latencyMs": 43
+  }
+}

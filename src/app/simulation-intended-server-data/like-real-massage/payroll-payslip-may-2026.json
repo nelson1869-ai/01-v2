@@ -1,0 +1,90 @@
+{
+  "_provenance": "SIMULATED_EXTERNAL_MESSAGE",
+  "documentType": "PAYROLL_EARNINGS_STATEMENT",
+  "company": {
+    "name": "AutoDo AI Technologies Inc.",
+    "ein": "94-8192031",
+    "address": "100 Innovation Way, Suite 400, Bonifacio Global City, Taguig, Metro Manila"
+  },
+  "employee": {
+    "name": "Nelson",
+    "employeeId": "EMP-2026-084",
+    "department": "Core AI & Runtime Engineering",
+    "jobTitle": "Principal AI Systems Engineer",
+    "email": "dev@autodo.ai",
+    "taxStatus": "Single / 0 Exemptions"
+  },
+  "payPeriod": {
+    "periodStart": "2026-05-01",
+    "periodEnd": "2026-05-31",
+    "payDate": "2026-05-29",
+    "cycle": "Monthly",
+    "status": "PROCESSED_AND_UPDATED"
+  },
+  "earnings": [
+    {
+      "type": "Base Monthly Salary",
+      "hours": 160,
+      "rate": 50.0,
+      "currentAmount": 8000.0,
+      "ytdAmount": 40000.0
+    },
+    {
+      "type": "AI Systems Delivery Bonus",
+      "hours": 0,
+      "rate": 0,
+      "currentAmount": 1200.0,
+      "ytdAmount": 3600.0
+    },
+    {
+      "type": "Internet & Remote Stipend",
+      "hours": 0,
+      "rate": 0,
+      "currentAmount": 150.0,
+      "ytdAmount": 750.0
+    }
+  ],
+  "grossPay": {
+    "currentTotal": 9350.0,
+    "ytdTotal": 44350.0
+  },
+  "deductionsAndTaxes": [
+    {
+      "type": "Income Withholding Tax",
+      "currentAmount": 1420.0,
+      "ytdAmount": 6800.0
+    },
+    {
+      "type": "Social Security / SSS",
+      "currentAmount": 180.0,
+      "ytdAmount": 900.0
+    },
+    {
+      "type": "Health Insurance / PhilHealth",
+      "currentAmount": 110.0,
+      "ytdAmount": 550.0
+    },
+    {
+      "type": "Retirement Fund 401(k) / Provident",
+      "currentAmount": 467.5,
+      "ytdAmount": 2217.5
+    }
+  ],
+  "totalDeductions": {
+    "currentTotal": 2177.5,
+    "ytdTotal": 10467.5
+  },
+  "netPay": {
+    "currency": "USD",
+    "currentNet": 7172.5,
+    "ytdNet": 33882.5
+  },
+  "disbursement": {
+    "paymentMethod": "DIRECT_DEPOSIT",
+    "bankName": "First Digital Global Bank",
+    "accountType": "Checking",
+    "accountMasked": "****-****-7819",
+    "depositStatus": "CONFIRMED_CLEARED",
+    "transactionRef": "ACH-20260527-891024"
+  }
+}

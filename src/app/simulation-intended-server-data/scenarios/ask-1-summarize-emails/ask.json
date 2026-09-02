@@ -1,0 +1,21 @@
+{
+  "scenarioId": "ask_1_summarize_emails",
+  "name": "Ask 1 — Summarize Important Emails (Read-Only)",
+  "category": "EMAIL_SUMMARIZATION",
+  "goal": "Summarize unread important emails from today from Gmail.",
+  "ingressType": "HTTP_POST_OR_MANUAL_TRIGGER",
+  "requester": "Nelson (Owner)",
+  "timestamp": "2026-05-27T10:32:11.120Z",
+  "traceId": "trc_autodo_20260527_98a",
+  "targetProvider": "Google Gmail API v1",
+  "requiredScope": "gmail.readonly",
+  "riskLevel": "READ_ONLY",
+  "inputPayload": {
+    "httpMethod": "POST",
+    "path": "/api/runs/create",
+    "clientIp": "127.0.0.1",
+    "headers": { "x-trace-id": "trc_autodo_20260527_98a" },
+    "rawText": "Summarize unread important emails from today from Gmail.",
+    "source": "Manual Run"
+  }
+}

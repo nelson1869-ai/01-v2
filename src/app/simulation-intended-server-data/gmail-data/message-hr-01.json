@@ -1,0 +1,21 @@
+{
+  "_provenance": "SIMULATED_EXTERNAL_MESSAGE",
+  "sourceSystem": "Gmail",
+  "provider": "Google Gmail",
+  "origin": "gmail.googleapis.com",
+  "sourceType": "SIMULATED_EXTERNAL_MESSAGE",
+  "account": "dev@autodo.ai",
+  "messageId": "msg_hr_01",
+  "threadId": "thread_payroll_01",
+  "historyId": "98129",
+  "receivedAt": "2026-05-27T10:32:13.026Z",
+  "headers": {
+    "From": "hr@company.com",
+    "To": "dev@autodo.ai",
+    "Subject": "Payroll update for May 2026",
+    "Date": "Tue, 27 May 2026 10:30:00 +0000"
+  },
+  "labels": ["UNREAD", "IMPORTANT", "INBOX"],
+  "snippet": "Payroll processing is confirmed.",
+  "payloadFixturePath": "src/app/simulation-intended-server-data/gmail-data/message-hr-01.json"
+}

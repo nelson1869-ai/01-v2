@@ -1,0 +1,21 @@
+{
+  "_provenance": "SIMULATED_EXTERNAL_MESSAGE",
+  "sourceSystem": "Gmail",
+  "provider": "Google Gmail",
+  "origin": "gmail.googleapis.com",
+  "sourceType": "SIMULATED_EXTERNAL_MESSAGE",
+  "account": "dev@autodo.ai",
+  "messageId": "msg_john_02",
+  "threadId": "thread_proposal_02",
+  "historyId": "98130",
+  "receivedAt": "2026-05-27T10:32:13.026Z",
+  "headers": {
+    "From": "john@partner.com",
+    "To": "dev@autodo.ai",
+    "Subject": "Proposal follow-up",
+    "Date": "Tue, 27 May 2026 10:10:00 +0000"
+  },
+  "labels": ["UNREAD", "IMPORTANT", "INBOX"],
+  "snippet": "John followed up on the shared proposal.",
+  "payloadFixturePath": "src/app/simulation-intended-server-data/gmail-data/message-john-02.json"
+}

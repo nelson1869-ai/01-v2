@@ -1,0 +1,53 @@
+{
+  "_provenance": "SIMULATED_EXTERNAL_MESSAGE",
+  "sourceSystem": "Gmail",
+  "provider": "Google Gmail API v1",
+  "origin": "gmail.googleapis.com",
+  "account": "dev@autodo.ai",
+  "id": "msg_calendar_05",
+  "threadId": "thread_cal_05",
+  "labelIds": ["UNREAD", "IMPORTANT", "CALENDAR", "INBOX"],
+  "snippet": "Invitation: Personal AI Architecture Sync @ Thu May 29, 2026 2pm - 2:30pm (Asia/Manila).",
+  "historyId": "98133",
+  "internalDate": "1779880333000",
+  "payload": {
+    "partId": "",
+    "mimeType": "multipart/alternative",
+    "filename": "",
+    "headers": [
+      {
+        "name": "From",
+        "value": "Google Calendar <calendar-notification@google.com>"
+      },
+      { "name": "To", "value": "Nelson <dev@autodo.ai>" },
+      {
+        "name": "Subject",
+        "value": "Invitation: Personal AI Architecture Sync @ Thu May 29, 2026"
+      },
+      { "name": "Date", "value": "Tue, 27 May 2026 11:15:00 +0000" },
+      {
+        "name": "Message-ID",
+        "value": "<calendar-invite-20260527@google.com>"
+      },
+      { "name": "MIME-Version", "value": "1.0" },
+      {
+        "name": "Content-Type",
+        "value": "multipart/alternative; boundary=\"boundary_cal_05\""
+      }
+    ],
+    "body": { "size": 0 },
+    "parts": [
+      {
+        "partId": "0",
+        "mimeType": "text/plain",
+        "headers": [
+          { "name": "Content-Type", "value": "text/plain; charset=UTF-8" }
+        ],
+        "body": {
+          "size": 210,
+          "data": "Event: Personal AI Architecture Sync\nWhen: Thursday, May 29, 2026 · 2:00 PM - 2:30 PM (Asia/Manila)\nAttendees: dev@autodo.ai, team@autodo.ai\nStatus: Awaiting your response"
+        }
+      }
+    ]
+  }
+}

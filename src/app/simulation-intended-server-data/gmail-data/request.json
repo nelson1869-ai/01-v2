@@ -1,0 +1,14 @@
+{
+  "_provenance": "SIMULATED",
+  "method": "GET",
+  "endpoint": "/gmail/v1/users/me/messages",
+  "query": "is:unread is:important newer_than:1d",
+  "maxResults": 10,
+  "scope": "gmail.readonly",
+  "headers": {
+    "Authorization": "Bearer ya29.LOCALDEV_MOCK_GMAIL_TOKEN",
+    "Accept": "application/json",
+    "x-autodo-run-id": "run_2026_05_27_00129",
+    "x-autodo-lease-id": "lease_autodo_00129_wk1"
+  }
+}

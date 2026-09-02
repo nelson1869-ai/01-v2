@@ -1,0 +1,27 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+  "tailwindCSS.lint.suggestCanonicalClasses": "warning",
+
+  "editor.hover.enabled": "on",
+  "editor.parameterHints.enabled": true,
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "off",
+    "strings": "off"
+  },
+
+  "editor.inlayHints.enabled": "on",
+
+  "js/ts.parameterNames.enabled": "all",
+  "js/ts.variableTypes.enabled": true,
+  "js/ts.propertyDeclarationTypes.enabled": true,
+  "js/ts.functionLikeReturnTypes.enabled": true,
+  "js/ts.suggest.autoImports": true,
+
+  "cSpell.enabled": false
+}

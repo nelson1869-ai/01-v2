@@ -1,0 +1,44 @@
+{
+  "_provenance": "SIMULATED_EXTERNAL_MESSAGE",
+  "sourceSystem": "Gmail",
+  "provider": "Google Gmail API v1",
+  "origin": "gmail.googleapis.com",
+  "account": "dev@autodo.ai",
+  "id": "msg_hr_01",
+  "threadId": "thread_payroll_01",
+  "labelIds": ["UNREAD", "IMPORTANT", "CATEGORY_UPDATES", "INBOX"],
+  "snippet": "Payroll processing is confirmed for May 2026. Please review your direct deposit summary.",
+  "historyId": "98129",
+  "internalDate": "1779877933000",
+  "payload": {
+    "partId": "",
+    "mimeType": "multipart/alternative",
+    "filename": "",
+    "headers": [
+      { "name": "From", "value": "HR Operations <hr@company.com>" },
+      { "name": "To", "value": "Nelson <dev@autodo.ai>" },
+      { "name": "Subject", "value": "Payroll update for May 2026" },
+      { "name": "Date", "value": "Tue, 27 May 2026 10:30:00 +0000" },
+      { "name": "Message-ID", "value": "<payroll-20260527-01@company.com>" },
+      { "name": "MIME-Version", "value": "1.0" },
+      {
+        "name": "Content-Type",
+        "value": "multipart/alternative; boundary=\"boundary_hr_01\""
+      }
+    ],
+    "body": { "size": 0 },
+    "parts": [
+      {
+        "partId": "0",
+        "mimeType": "text/plain",
+        "headers": [
+          { "name": "Content-Type", "value": "text/plain; charset=UTF-8" }
+        ],
+        "body": {
+          "size": 182,
+          "data": "Payroll processing is confirmed for May 2026.\nDirect deposits are scheduled for processing on Thursday morning.\nPlease check your statement on the employee portal if needed."
+        }
+      }
+    ]
+  }
+}

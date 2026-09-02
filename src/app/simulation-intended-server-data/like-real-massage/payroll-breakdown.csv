@@ -1,0 +1,13 @@
+"Section","Item_Description","Hours","Rate_USD","Current_Amount_USD","YTD_Amount_USD","Notes"
+"EARNINGS","Base Monthly Salary",160,50.00,8000.00,40000.00,"Standard 40hr/wk schedule"
+"EARNINGS","AI Systems Delivery Bonus",0,0.00,1200.00,3600.00,"May 2026 milestone completion"
+"EARNINGS","Internet & Remote Stipend",0,0.00,150.00,750.00,"Monthly connectivity allowance"
+"GROSS TOTAL","Total Gross Earnings",160,0.00,9350.00,44350.00,"Pre-tax gross income"
+"DEDUCTIONS","Income Withholding Tax",0,0.00,1420.00,6800.00,"Federal/State statutory rate"
+"DEDUCTIONS","Social Security (SSS)",0,0.00,180.00,900.00,"Statutory social security"
+"DEDUCTIONS","Health Insurance (PhilHealth)",0,0.00,110.00,550.00,"Employee medical contribution"
+"DEDUCTIONS","401(k) / Provident Fund",0,0.00,467.50,2217.50,"5% matched retirement plan"
+"DEDUCTIONS TOTAL","Total Deductions & Taxes",0,0.00,2177.50,10467.50,"Total subtracted"
+"NET SUMMARY","NET TAKE-HOME PAY",0,0.00,7172.50,33882.50,"Disbursed to checking account"
+"DISBURSEMENT","Direct Deposit ACH",0,0.00,7172.50,0.00,"First Digital Global Bank (****-7819) - Confirmed"
+

@@ -1,0 +1,36 @@
+{
+  "scenarioId": "ask_2_autoreply_acting_as_me",
+  "status": "VERIFIED_COMPLETED",
+  "provenance": "DERIVED",
+  "durationMs": 1842,
+  "costUsd": 0.0004,
+  "assertionsPassed": 6,
+  "assertionsTotal": 6,
+  "sentMessageDetails": {
+    "provider": "Google Gmail API v1",
+    "endpoint": "POST https://gmail.googleapis.com/gmail/v1/users/me/messages/send",
+    "sentMessageId": "msg_reply_9981_sent",
+    "threadId": "thread_proposal_02",
+    "httpStatus": 200,
+    "recipient": "John Doe <john.doe@partner.org>",
+    "deliveredTimestamp": "2026-05-27T10:40:02.140Z"
+  },
+  "policyAudit": {
+    "ruleName": "TRUSTED_CONTACT_AUTO_REPLY_POLICY",
+    "recipientStatus": "VERIFIED_TRUSTED_CONTACT (CONTACT_002)",
+    "sideEffect": "MUTATING_EXTERNAL_WRITE",
+    "policyDecision": "ALLOW_WITH_AUDIT",
+    "signedLeaseId": "lease_reply_20260527_002",
+    "humanOverrideRequired": false
+  },
+  "summaryTitle": "Auto-Reply Sent to John Doe on Gmail (Acting as Nelson)",
+  "bulletPoints": [
+    "Detected incoming message from John Doe on thread_proposal_02.",
+    "RAG retrieved Nelson's communication guidelines & calendar availability for Thursday.",
+    "Composed draft in Nelson's professional tone proposing Thursday at 2:00 PM.",
+    "Policy engine verified John Doe as an approved trusted contact with auto-reply permissions.",
+    "Cryptographic execution lease signed and locked via durable worker (claim_reply_002_wk1).",
+    "Sent RFC 2822 reply via Gmail API and placed tentative 15-minute calendar hold."
+  ],
+  "terminalDigest": "Successfully replied to John Doe's proposal follow-up on your behalf proposing Thursday 2:00 PM sync. Sent via Gmail API."
+}

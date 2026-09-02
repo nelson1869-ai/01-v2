@@ -1,0 +1,24 @@
+{
+  "scenarioId": "ask_1_summarize_emails",
+  "status": "VERIFIED_COMPLETED",
+  "provenance": "DERIVED",
+  "durationMs": 2054,
+  "costUsd": 0.0003,
+  "assertionsPassed": 5,
+  "assertionsTotal": 5,
+  "summaryTitle": "5 Important Unread Emails Summarized for May 27, 2026",
+  "bulletPoints": [
+    "HR Operations: Payroll update for May 2026 confirmed ($7,172.50 net pay queued for deposit on May 29 via ACH).",
+    "John Doe: Proposal follow-up for Q3 Architecture (Requested 15-minute sync).",
+    "Finance Billing: Pending invoice #INV-2026-118 for monthly staging cluster ($48.20 USD due May 30).",
+    "GitHub Notifications: Review requested on PR #42 ('Add 18-layer inspection pipeline').",
+    "Google Calendar: Team architecture sync invitation for Thursday May 29, 2:00 PM."
+  ],
+  "toolActionExecuted": {
+    "toolName": "gmail.list_messages",
+    "httpStatus": 200,
+    "messagesRetrieved": 5,
+    "sideEffect": "NONE_READ_ONLY"
+  },
+  "terminalDigest": "Morning email digest successfully compiled according to owner preferences (#MEM-012 concise bullets). No external side effects executed."
+}

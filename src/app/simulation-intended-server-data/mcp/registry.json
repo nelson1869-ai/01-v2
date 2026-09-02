@@ -1,0 +1,60 @@
+{
+  "_provenance": "SIMULATED",
+  "protocolVersion": "2024-11-05",
+  "servers": [
+    {
+      "id": "mcp_fs",
+      "name": "filesystem-server",
+      "transport": "stdio",
+      "connectionState": "CONNECTED",
+      "protocolVersion": "2024-11-05",
+      "capabilities": ["resources", "tools", "prompts"],
+      "toolsCount": 3,
+      "resourcesCount": 12,
+      "promptsCount": 2,
+      "health": "HEALTHY",
+      "lastConnected": "2026-05-27 10:30:00 AM",
+      "tools": [
+        {
+          "name": "read_file",
+          "description": "Read contents of a local file",
+          "inputSchema": "{\"path\": \"string\"}",
+          "risk": "LOW"
+        },
+        {
+          "name": "list_directory",
+          "description": "List files in directory",
+          "inputSchema": "{\"path\": \"string\"}",
+          "risk": "LOW"
+        },
+        {
+          "name": "write_file",
+          "description": "Write file to disk (Require Auth)",
+          "inputSchema": "{\"path\": \"string\", \"content\": \"string\"}",
+          "risk": "HIGH"
+        }
+      ]
+    },
+    {
+      "id": "mcp_fetch",
+      "name": "fetch-server",
+      "transport": "stdio",
+      "connectionState": "CONNECTED",
+      "protocolVersion": "2024-11-05",
+      "capabilities": ["tools"],
+      "toolsCount": 1,
+      "resourcesCount": 0,
+      "promptsCount": 0,
+      "health": "HEALTHY",
+      "lastConnected": "2026-05-27 10:31:00 AM",
+      "tools": [
+        {
+          "name": "fetch_url",
+          "description": "HTTP GET request to public URL",
+          "inputSchema": "{\"url\": \"string\"}",
+          "risk": "LOW"
+        }
+      ]
+    }
+  ]
+}

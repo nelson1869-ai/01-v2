@@ -1,0 +1,18 @@
+{
+  "draftId": "draft_reply_john_002",
+  "provenance": "SIMULATED_REPLY_ACTION",
+  "actingPersona": "Nelson (Personal AI Assistant Mode)",
+  "tone": "Professional, Warm, Direct",
+  "threadId": "thread_proposal_02",
+  "inReplyTo": "<proposal-followup-20260527@partner.org>",
+  "to": "John Doe <john.doe@partner.org>",
+  "from": "Nelson <dev@autodo.ai>",
+  "subject": "Re: Proposal follow-up for Q3 Architecture",
+  "bodyPlain": "Hi John,\n\nThanks for following up. The Q3 architecture proposal draft looks very solid.\n\nI am free for a 15-minute sync on Thursday, May 29, 2026 at 2:00 PM (Asia/Manila time). I'll send over a calendar invite so we can align before final submission.\n\nBest,\nNelson",
+  "calendarHoldProposed": {
+    "title": "Nelson / John — Q3 Architecture Proposal Sync",
+    "start": "2026-05-29T14:00:00+08:00",
+    "end": "2026-05-29T14:15:00+08:00",
+    "attendees": ["dev@autodo.ai", "john.doe@partner.org"]
+  }
+}

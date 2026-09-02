@@ -1,0 +1,25 @@
+{
+  "_provenance": "SIMULATED",
+  "serverId": "mcp_fs",
+  "server": "filesystem-server",
+  "tool": "write_file",
+  "arguments": {
+    "path": "/allowed/notes.md",
+    "content": "Summary notes from email digest..."
+  },
+  "inputSchema": "{\"path\": \"string\", \"content\": \"string\"}",
+  "requestedCapability": "cap_mcp_fs_write",
+  "policyResult": "REQUIRE_APPROVAL",
+  "authorizationResult": "WAITING_FOR_APPROVAL",
+  "planStep": "step_mcp_01",
+  "executionId": null,
+  "executionState": "NOT_STARTED",
+  "request": null,
+  "response": null,
+  "latencyMs": null,
+  "retryCount": 0,
+  "error": null,
+  "observedResult": null,
+  "verificationResult": null,
+  "note": "MCP availability != permission. Privileged MCP call stops at Policy / Approval Gate."
+}

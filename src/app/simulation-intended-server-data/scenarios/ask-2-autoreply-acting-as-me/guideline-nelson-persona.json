@@ -1,0 +1,40 @@
+{
+  "_provenance": "SIMULATED",
+  "documentId": "DOC-GUIDELINE-019",
+  "title": "Nelson Persona Communication & Auto-Reply Guidelines",
+  "version": "1.2",
+  "status": "VERIFIED_ACTIVE",
+  "author": "Nelson (usr_dev_001)",
+  "indexedInPgVector": true,
+  "embedding": {
+    "model": "text-embedding-004",
+    "dimensions": 768,
+    "similarity": 0.972,
+    "rerankScore": 0.985
+  },
+  "personaRules": {
+    "tone": "Direct, professional, polite, confident",
+    "prohibitedPhrases": [
+      "I hope this email finds you well",
+      "I am an AI assistant",
+      "Per your request"
+    ],
+    "standardSignoff": "Best, Nelson",
+    "workingHours": "08:00 - 18:00 (Asia/Manila)",
+    "defaultMeetingDurationMinutes": 15
+  },
+  "trustedPartners": [
+    {
+      "name": "John Doe",
+      "email": "john.doe@partner.org",
+      "organization": "Partner Org",
+      "autoReplyPermitted": true,
+      "allowedTopics": ["Q3 Architecture proposal", "scheduling syncs"]
+    }
+  ],
+  "escalationTriggers": [
+    "Monetary commitments > $500",
+    "Legal contracts / NDAs",
+    "Unknown senders"
+  ]
+}

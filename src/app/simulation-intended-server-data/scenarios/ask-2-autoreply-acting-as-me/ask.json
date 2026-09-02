@@ -1,0 +1,32 @@
+{
+  "scenarioId": "ask_2_autoreply_acting_as_me",
+  "name": "Ask 2 — Auto-Reply to Client on Gmail (Acting as Me)",
+  "category": "EMAIL_AUTONOMOUS_REPLY",
+  "goal": "Detect incoming message from John Doe on Gmail and automatically compose & send an authorized reply in Nelson's voice proposing Thursday 2:00 PM sync.",
+  "ingressType": "GMAIL_WEBHOOK_EVENT",
+  "incomingSender": "John Doe <john.doe@partner.org>",
+  "subject": "Proposal follow-up for Q3 Architecture",
+  "timestamp": "2026-05-27T10:40:00.000Z",
+  "traceId": "trc_autodo_20260527_reply_02",
+  "targetProvider": "Google Gmail API v1",
+  "requiredScope": "gmail.send",
+  "riskLevel": "MUTATING_EXTERNAL_WRITE",
+  "policyRuleApplied": "TRUSTED_CONTACT_AUTO_REPLY_POLICY",
+  "inputPayload": {
+    "sourceSystem": "Gmail",
+    "provider": "Google Gmail API v1",
+    "origin": "gmail.googleapis.com",
+    "sourceType": "SIMULATED_EXTERNAL_MESSAGE",
+    "account": "dev@autodo.ai",
+    "messageId": "msg_john_02",
+    "threadId": "thread_proposal_02",
+    "headers": {
+      "From": "John Doe <john.doe@partner.org>",
+      "To": "Nelson <dev@autodo.ai>",
+      "Subject": "Proposal follow-up for Q3 Architecture",
+      "Date": "Tue, 27 May 2026 10:40:00 +0000",
+      "Message-ID": "<proposal-followup-20260527@partner.org>"
+    },
+    "bodyText": "Hi Nelson, Following up on the Q3 architecture proposal draft we discussed yesterday afternoon. Let me know if you want to schedule a 15-minute call before we submit the final draft. Thanks, John"
+  }
+}

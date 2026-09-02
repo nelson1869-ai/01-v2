@@ -1,0 +1,75 @@
+{
+  "_provenance": "SIMULATED",
+  "httpStatus": 200,
+  "statusText": "OK",
+  "latencyMs": 580,
+  "payloadBytes": 18400,
+  "resultSizeEstimate": 5,
+  "messages": [
+    {
+      "id": "msg_hr_01",
+      "threadId": "th_hr_01",
+      "labelIds": ["UNREAD", "IMPORTANT", "INBOX"],
+      "snippet": "Payroll processing is confirmed for May 2026...",
+      "internalDate": "1779877931000",
+      "headers": {
+        "From": "HR <hr@company.com>",
+        "To": "Nelson <dev@autodo.ai>",
+        "Subject": "Payroll update for May 2026",
+        "Date": "Wed, 27 May 2026 10:15:00 +0800"
+      }
+    },
+    {
+      "id": "msg_john_02",
+      "threadId": "th_john_02",
+      "labelIds": ["UNREAD", "IMPORTANT", "INBOX"],
+      "snippet": "John followed up on the shared proposal and suggested Thursday 3 PM...",
+      "internalDate": "1779877800000",
+      "headers": {
+        "From": "John Doe <john@partner.com>",
+        "To": "Nelson <dev@autodo.ai>",
+        "Subject": "Proposal follow-up",
+        "Date": "Wed, 27 May 2026 10:10:00 +0800"
+      }
+    },
+    {
+      "id": "msg_finance_03",
+      "threadId": "th_finance_03",
+      "labelIds": ["UNREAD", "IMPORTANT", "INBOX"],
+      "snippet": "The invoice #INV-2026-118 remains pending for review...",
+      "internalDate": "1779877200000",
+      "headers": {
+        "From": "Finance <finance@company.com>",
+        "To": "Nelson <dev@autodo.ai>",
+        "Subject": "Invoice #INV-2026-118",
+        "Date": "Wed, 27 May 2026 10:00:00 +0800"
+      }
+    },
+    {
+      "id": "msg_security_04",
+      "threadId": "th_security_04",
+      "labelIds": ["UNREAD", "IMPORTANT", "INBOX"],
+      "snippet": "Routine OAuth and workspace security check completed with zero findings...",
+      "internalDate": "1779876600000",
+      "headers": {
+        "From": "Security <security@company.com>",
+        "To": "Nelson <dev@autodo.ai>",
+        "Subject": "Account security alert",
+        "Date": "Wed, 27 May 2026 09:50:00 +0800"
+      }
+    },
+    {
+      "id": "msg_meeting_05",
+      "threadId": "th_meeting_05",
+      "labelIds": ["UNREAD", "IMPORTANT", "INBOX"],
+      "snippet": "Team meeting agenda finalized and scheduled for 3:00 PM...",
+      "internalDate": "1779876000000",
+      "headers": {
+        "From": "Operations <ops@company.com>",
+        "To": "Nelson <dev@autodo.ai>",
+        "Subject": "Team meeting update",
+        "Date": "Wed, 27 May 2026 09:40:00 +0800"
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "_provenance": "SIMULATED_EXTERNAL_MESSAGE",
+  "sourceSystem": "Gmail",
+  "provider": "Google Gmail API v1",
+  "origin": "gmail.googleapis.com",
+  "account": "dev@autodo.ai",
+  "id": "msg_john_02",
+  "threadId": "thread_proposal_02",
+  "labelIds": ["UNREAD", "IMPORTANT", "CATEGORY_PERSONAL", "INBOX"],
+  "snippet": "Following up on the Q3 architecture proposal draft we discussed yesterday afternoon.",
+  "historyId": "98130",
+  "internalDate": "1779878533000",
+  "payload": {
+    "partId": "",
+    "mimeType": "multipart/alternative",
+    "filename": "",
+    "headers": [
+      { "name": "From", "value": "John Doe <john.doe@partner.org>" },
+      { "name": "To", "value": "Nelson <dev@autodo.ai>" },
+      { "name": "Subject", "value": "Proposal follow-up for Q3 Architecture" },
+      { "name": "Date", "value": "Tue, 27 May 2026 10:40:00 +0000" },
+      {
+        "name": "Message-ID",
+        "value": "<proposal-followup-20260527@partner.org>"
+      },
+      { "name": "MIME-Version", "value": "1.0" },
+      {
+        "name": "Content-Type",
+        "value": "multipart/alternative; boundary=\"boundary_john_02\""
+      }
+    ],
+    "body": { "size": 0 },
+    "parts": [
+      {
+        "partId": "0",
+        "mimeType": "text/plain",
+        "headers": [
+          { "name": "Content-Type", "value": "text/plain; charset=UTF-8" }
+        ],
+        "body": {
+          "size": 224,
+          "data": "Hi Nelson,\n\nFollowing up on the Q3 architecture proposal draft we discussed yesterday afternoon.\nLet me know if you want to schedule a 15-minute call before we submit the final draft.\n\nThanks,\nJohn"
+        }
+      }
+    ]
+  }
+}
