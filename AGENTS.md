@@ -1939,3 +1939,132 @@ When the student asks to add or update phase files:
 - THEN continue with the lesson
 
 Phase files must always be up to date BEFORE the lesson begins.
+
+---
+
+# 50. MODERN 2026 STACK RULE
+
+The `app-v2/` manual rebuild uses the **same 18-layer AutoDo brain concepts** as V1,
+but the implementation must use **cutting-edge 2026 patterns and technology**.
+
+V1 is a reference for CONCEPTS only.
+
+V1 is NOT a reference for implementation style, code patterns, or architecture choices.
+
+---
+
+## Core Principle
+
+```
+V1 → teaches WHAT the pipeline is
+V2 → teaches HOW to build it in a modern, production-grade way
+```
+
+---
+
+## Modern 2026 Tech Stack Requirements
+
+### Framework
+- Next.js 15 (App Router, Turbopack)
+- React 19 (Server Components by default, Server Actions)
+- TypeScript 5.x strict mode — `"strict": true` always on
+
+### TypeScript Patterns
+- `readonly` on all immutable DTOs
+- Discriminated unions for state machines
+- `satisfies` operator for type-safe object literals
+- `unknown` instead of `any` — never use `any`
+- Explicit return types on all layer functions
+- `import type` for type-only imports
+
+### AI Architecture (Provider-Neutral)
+- AI calls go through a provider-neutral contract — never call SDK directly from UI or domain
+- Support multiple providers: Gemini, Claude, Llama, Ollama
+- AI output must be **structured JSON artifacts** — not raw text
+- Streaming responses where appropriate
+- Proactive/Ambient AI pattern — not just reactive chatbot
+
+### AI Safety
+- Policy engine is deterministic — NOT inside the LLM
+- Authorization is deterministic — NOT inside the LLM
+- Llama Guard 4 or equivalent for safety screening (Phase 9+)
+- Structured reasoning artifact required before any action
+
+### RAG (Retrieval-Augmented Generation)
+- pgvector with HNSW indexing
+- High-dimension vectors (1024d or 2048d where provider supports)
+- Semantic reranker before final context assembly
+- Dedicated `rag/` subsystem — not mixed into AI layer
+
+### Database
+- PostgreSQL only (no SQLite, no in-memory)
+- Drizzle ORM for type-safe queries
+- Raw SQL taught first before introducing Drizzle
+- pgvector extension for vector storage
+
+### Observability
+- Structured logs (JSON, not plain text)
+- OpenTelemetry traceId and spanId on every layer
+- F12 Console logs with `%c` color coding per layer
+- Terminal server logs with structured JSON where possible
+- Developer UI shows OBSERVED and DERIVED data — never SIMULATED
+
+### External Integrations
+- All external APIs behind explicit adapter contracts
+- Gmail, Calendar, GitHub behind dedicated adapters
+- MCP (Model Context Protocol) for tool integrations
+- Never call external APIs directly from domain layer
+
+---
+
+## Layer Color Convention (F12 Console)
+
+Every layer function MUST log with its assigned color:
+
+| Layer | Name | Color | Hex |
+|-------|------|-------|-----|
+| 1 | Input / Cue | Indigo | `#818cf8` |
+| 2 | Perception / Parsing | Sky Blue | `#38bdf8` |
+| 3 | Context Build | Emerald | `#34d399` |
+| 4 | Memory Retrieval | Purple | `#a78bfa` |
+| 5 | AI Reasoning | Pink | `#f472b6` |
+| 6 | Candidate Generation | Orange | `#fb923c` |
+| 7 | Scoring | Yellow | `#fbbf24` |
+| 8 | Grounding | Lime | `#a3e635` |
+| 9 | Policy | Amber | `#f59e0b` |
+| 10 | Authorization | Red | `#f87171` |
+| 11 | Planning | Teal | `#2dd4bf` |
+| 12 | Durable Execution | Cyan | `#22d3ee` |
+| 13 | Tool / Adapter Action | Blue | `#60a5fa` |
+| 14 | Observation | Violet | `#8b5cf6` |
+| 15 | Verification | Green | `#4ade80` |
+| 16 | Reward | Rose | `#fb7185` |
+| 17 | Learning | Fuchsia | `#e879f9` |
+| 18 | Verified Memory | Slate | `#94a3b8` |
+
+---
+
+## What "Modern" Does NOT Mean
+
+- Not microservices — modular monolith first
+- Not Kubernetes — local first, then Vercel
+- Not GraphQL — simple REST Route Handlers first
+- Not Redux — React state + server state is enough
+- Not class-based OOP everywhere — prefer pure functions
+- Not speculative abstractions — solve the actual current problem
+
+---
+
+## Comparison: V1 vs V2 Implementation
+
+| Concern | V1 Reference | V2 Modern 2026 |
+|---------|-------------|----------------|
+| Data | SIMULATED mock | REAL observed/derived |
+| AI calls | Basic prompt | Structured schema output |
+| AI provider | Single assumed | Provider-neutral contract |
+| Logging | Basic console.log | Colored layer logs + structured JSON |
+| Types | Basic interfaces | Strict readonly DTOs, discriminated unions |
+| Safety | Conceptual | Deterministic policy engine |
+| Memory | Conceptual | pgvector + HNSW RAG |
+| Execution | Conceptual | Durable idempotent execution |
+| Observability | Conceptual | OpenTelemetry traces/spans |
