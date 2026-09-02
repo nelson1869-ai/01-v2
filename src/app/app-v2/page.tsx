@@ -3,23 +3,26 @@
 import { useState } from "react";
 
 export default function Page() {
-  // useState = nagtatago ng value na pwedeng magbago
-  // false = default na value (hindi pa na-click)
-  const [clicked, setClicked] = useState(false);
+  // prompt = ang text na tine-type ng user
+  const [prompt, setPrompt] = useState("");
 
   return (
-    <main className="min-h-screen bg-[#050711] text-white p-8">
-      <h1 className="text-2xl font-bold text-indigo-400 mb-4">AutoDo 01-v2</h1>
+    <main className="min-h-screen bg-[#050711] text-white p-8 space-y-4">
+      <h1 className="text-2xl font-bold text-indigo-400">AutoDo 01-v2</h1>
 
-      <button
-        onClick={() => setClicked(true)}
-        className="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded font-semibold"
-      >
-        Subukan
-      </button>
+      <input
+        value={prompt}
+        onChange={(e) => setPrompt(e.target.value)}
+        placeholder="Ano ang gusto mong gawin?"
+        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+      />
 
-      {/* Lalabas lang kapag clicked ay true */}
-      {clicked && <p className="mt-4 text-emerald-400">Na-click mo! 🎉</p>}
+      {/* Real-time na lumalabas ang tine-type mo */}
+      {prompt && (
+        <p className="text-sm text-gray-400">
+          Sinulat mo: <span className="text-white font-medium">{prompt}</span>
+        </p>
+      )}
     </main>
   );
 }
