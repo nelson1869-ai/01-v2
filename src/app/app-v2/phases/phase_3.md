@@ -63,10 +63,10 @@ Layer 1 nagpo-produce ng `UnparsedCueEvent` → Layer 2 nagpo-produce ng `Canoni
 // ==========================================
 
 // Saan nanggaling ang request
-type CueSource = "chat" | "schedule" | "manual";
+export type CueSource = "chat" | "schedule" | "manual";
 
 // Raw na input — hindi pa na-process
-interface UnparsedCueEvent {
+export interface UnparsedCueEvent {
   readonly cueId: string;
   readonly source: CueSource;
   readonly rawPrompt: string;

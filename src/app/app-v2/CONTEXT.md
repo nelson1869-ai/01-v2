@@ -125,3 +125,30 @@ chore: <short description>           ← Setup/config
 2. Basahin ang naaangkop na `phases/phase_X.md`
 3. Tingnan ang current state ng `page.tsx`
 4. Ituloy ang SUSUNOD na lesson base sa git history
+
+---
+
+## 9. Student Lesson Presentation Preference
+
+Kapag nagbibigay ng bagong lesson:
+
+1. Ibigay ang exact clickable phase-file location at line kung saan nagsisimula ang lesson.
+2. Ipaliwanag sa simpleng Taglish kung bakit kailangan ng AutoDo ang lesson.
+3. Magbigay ng maliit na ASCII visual para ipakita ang flow o relationship.
+4. Huwag ulitin ang code mula sa phase file. Ang student mismo ang magko-copy mula sa phase file.
+5. Magbigay lamang ng ONE implementation task, pagkatapos ay maghintay.
+
+Kapag nag-send ang student ng `d`:
+
+1. I-run ang `git log --oneline` at `git status`.
+2. I-inspect ang actual files at diff.
+3. I-compare ang implementation sa exact phase-file lesson.
+4. I-run ang `npm run lint && npx tsc --noEmit`.
+5. Magbigay ng ONE specific fix kung kailangan; kung correct, sundin ang lesson completion at commit protocol.
+
+Kapag nag-send ang student ng `s`:
+
+1. I-run ang `git log --oneline`.
+2. I-confirm na present ang exact required lesson commit.
+3. Kung missing ang commit, ipa-commit muna bago magpatuloy.
+4. Kung present, ituro ang next lesson gamit ang presentation preference sa itaas.
