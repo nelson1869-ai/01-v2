@@ -3,9 +3,10 @@
 type CueSource = "chat" | "schedule" | "manual";
 
 // Interface — nagde-describe ng object na may maraming properties
+// Interface — nagde-describe ng object na may maraming properties
 interface UnparsedCueEvent {
-  cueId: string; // Unique ID ng event
-  source: CueSource; // Gamit ang type natin sa itaas!
-  rawPrompt: string; // Ang text na tinype ng user
-  timestamp: string; // Kailan ito pumasok (ISO format)
+  readonly cueId: string; // Unique ID ng event — bawal baguhin!
+  readonly source: CueSource; // Gamit ang type natin sa itaas!
+  readonly rawPrompt: string; // Ang text na tinype ng user — huwag baguhin!
+  readonly timestamp: string; // Kailan ito pumasok (ISO format) — permanente
 }
