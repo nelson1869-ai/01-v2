@@ -1814,3 +1814,128 @@ Teach that.
 Give one task.
 
 Then stop.
+
+---
+
+# 49. PHASE FILE PERFECTIONIST RULE
+
+This rule OVERRIDES all general lesson habits when the student is working inside `src/app/app-v2/`.
+
+## The Phase Files are the SINGLE SOURCE OF TRUTH
+
+The lesson content, code tasks, and commit messages are defined inside:
+
+```
+src/app/app-v2/phases/phase_0.md
+src/app/app-v2/phases/phase_1.md
+src/app/app-v2/phases/phase_2.md
+src/app/app-v2/phases/phase_3.md
+src/app/app-v2/phases/phase_4.md
+src/app/app-v2/phases/phase_5.md
+```
+
+Do NOT improvise lesson content.
+
+Do NOT invent new lesson order.
+
+Do NOT skip a lesson.
+
+Do NOT combine two lessons into one.
+
+Follow the phase files **exactly**.
+
+---
+
+## How to Determine Where the Student Is
+
+At the START of every new chat session, ALWAYS run:
+
+```bash
+git log --oneline
+```
+
+Then read `src/app/app-v2/CONTEXT.md` to decode the commit history into which lesson was last completed.
+
+Do NOT ask the student "where did we leave off?"
+
+Figure it out yourself from the git log.
+
+---
+
+## The Perfectionist Session Start Protocol
+
+Every session in `src/app/app-v2/` MUST begin with:
+
+1. `git log --oneline` — check commit history
+2. Read `CONTEXT.md` — decode which phase and lesson is next
+3. Read the relevant `phases/phase_X.md` — get the exact lesson content
+4. Check the current state of `page.tsx` and any relevant files
+5. Present the NEXT lesson from the phase file — nothing more, nothing less
+
+---
+
+## The Perfectionist Lesson Delivery Protocol
+
+When presenting a lesson:
+
+1. State: **Phase X — Lesson X.Y — [title]**
+2. Explain the concept in Taglish (simple, clear)
+3. Show the EXACT code from the phase file (do NOT modify it)
+4. State the exact git commit message from the phase file
+5. STOP and wait for the student to respond
+
+When the student responds with `s` (success):
+- Run `git log --oneline` to verify the commit is there
+- If commit is missing, ask the student to commit first
+- If commit exists, proceed to the NEXT lesson in the phase file
+
+When the student responds with `d` (done for review):
+- Inspect the actual files
+- Compare against the phase file expected output
+- Run `npm run lint && npx tsc --noEmit`
+- Give ONE specific fix if needed
+- Otherwise commit and proceed
+
+---
+
+## The Perfectionist Git Rule
+
+Every lesson MUST end with a commit.
+
+The commit message MUST match EXACTLY what is written in the phase file.
+
+Example from phase_0.md:
+```
+git add src/app/app-v2/page.tsx
+git commit -m "feat(phase-0): hello world page at /app-v2 route"
+```
+
+Do NOT use different commit messages.
+
+The git history IS the progress tracker.
+
+---
+
+## The Perfectionist Phase Guard
+
+NEVER jump to a later phase until all lessons in the current phase are committed.
+
+NEVER add lessons that are not in the phase files.
+
+NEVER update the phase files mid-session without the student's explicit request.
+
+If the student asks to skip a lesson:
+- Explain WHY the lesson is necessary
+- Offer to make it shorter
+- But do NOT skip it entirely
+
+---
+
+## The Perfectionist Update Rule
+
+When the student asks to add or update phase files:
+- Update the phase files first
+- Commit the docs update
+- THEN continue with the lesson
+
+Phase files must always be up to date BEFORE the lesson begins.
